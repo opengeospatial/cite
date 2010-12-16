@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>WMS 1.3.0 Client Test Suite</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+</head>
+<body>
+<h1>Overview</h1>
+<p>This test suite is based on the following OGC specification:</p>
+<ul>
+  <li>
+    <em>Web Map Server Implementation Specification</em>, version 1.3.0 [OGC 06-042] (
+    <a href="http://portal.opengeospatial.org/files/?artifact_id=14416">PDF version</a>,
+    <a href="http://cite.opengeospatial.org/OGCTestData/wms/1.3.0/spec/wms1_3.html">HTML version</a>)
+  </li>
+</ul>
+
+
+<h2>What is tested</h2>
+<p>
+  This test suite creates a proxy service around a WMS 1.3.0 service of the user's choosing.
+  The user configures a WMS 1.3.0 client to use the proxy service, and exercises the client.
+  Each of the GetCapabilities, GetMap, and GetFeatureInfo requests that the client makes are validated.
+</p>
+
+<h2><a name="requirements">Test requirements</a></h2>
+<p>
+  The server the client uses must be configurable, not hardcoded.
+</p>
+
+</body>
+</html>

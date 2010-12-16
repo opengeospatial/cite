@@ -1,0 +1,24 @@
+<config>
+	<organization>
+		<name>OGC</name>
+	</organization>
+	<standard>
+		<name>WMS Client</name>
+	</standard>
+	<version>
+		<name>1.3.0</name>
+	</version>
+	<revision>
+		<name>r0</name>
+	</revision>
+	<suite>
+        <namespace-uri>urn:wms_client_test_suite/main</namespace-uri>
+        <prefix>main</prefix>
+        <local-name>suite</local-name>
+        <title>Example Client Test Suite</title>
+	</suite>
+	<source>ctl</source>
+    <resources>resources</resources> 
+    <web>web</web> 
+</config>
+
