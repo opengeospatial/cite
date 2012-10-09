@@ -1,24 +1,26 @@
-<config>
-	<organization>
-		<name>OGC</name>
-	</organization>
-	<standard>
-		<name>WMS Client</name>
-	</standard>
-	<version>
-		<name>1.3.0</name>
-	</version>
-	<revision>
-		<name>r0</name>
-	</revision>
-	<suite>
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Add entry to TE_BASE/config.xml (/config/scripts/organization) -->
+<organization>
+  <name>OGC</name>
+  <standard>
+    <name>WMS - Client</name>
+    <version>
+      <name>1.3.0</name>
+      <suite>
         <namespace-uri>urn:wms_client_test_suite/main</namespace-uri>
         <prefix>main</prefix>
         <local-name>suite</local-name>
-        <title>Example Client Test Suite</title>
-	</suite>
-	<source>ctl</source>
-    <resources>resources</resources> 
-    <web>web</web> 
-</config>
-
+        <title>WMS Client Test Suite</title>
+        <description>Checks the content of a note.</description>
+      </suite>
+      <revision>
+        <name>r0</name>
+        <sources>
+          <source>wms-client/1.3.0/ctl</source>
+        </sources>
+        <resources>wms-client/1.3.0/resources</resources>
+        <webdir>wms-client/1.3.0/web</webdir>
+      </revision>
+    </version>
+  </standard>
+</organization>
