@@ -9,12 +9,12 @@
       <suite>
         <namespace-uri>urn:wms_client_test_suite/main</namespace-uri>
         <prefix>main</prefix>
-        <local-name>suite</local-name>
+        <local-name>ets-wms-client</local-name>
         <title>WMS Client Test Suite</title>
-        <description>Checks the content of a note.</description>
+        <description>Validates WMS service requests.</description>
       </suite>
       <revision>
-        <name>r0</name>
+        <name>r1</name>
         <sources>
           <source>wms-client/1.3.0/ctl</source>
         </sources>
