@@ -105,9 +105,9 @@
 
       <xsl:choose>
         <xsl:when test="not($capabilities/wms:WMS_Capabilities)">
-					<ctl:message>FAILURE: Did not receive a WMS_Capabilities document! Skipping remaining tests.</ctl:message>	
-					<ctl:fail/>
-				</xsl:when>
+          <ctl:message>FAILURE: Did not receive a WMS_Capabilities document! Skipping remaining tests.</ctl:message>	
+          <ctl:fail/>
+        </xsl:when>
         <xsl:when test="string-length($monitor-urls/wms:GetCapabilities) gt 0 and string-length($monitor-urls/wms:GetMap) gt 0">
           <ctl:form>
             <xsl:text>Configure the client to use this proxy URL:</xsl:text>

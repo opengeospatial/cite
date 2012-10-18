@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ctl:package
  xmlns:ctl="http://www.occamlab.com/ctl"
  xmlns:ctlp="http://www.occamlab.com/te/parsers"
@@ -63,6 +64,10 @@
         <ctl:call-test name="gfi:query_layers-values">
           <ctl:with-param name="request" select="$request"/>
         </ctl:call-test>
+        <ctl:call-test name="gfi:query_layers-queryable">
+          <ctl:with-param name="request" select="$request"/>
+          <ctl:with-param name="capabilities" select="$capabilities"/>
+        </ctl:call-test>
       </xsl:if>
 
       <xsl:if test="$request/ctl:param[fn:upper-case(@name)='INFO_FORMAT']">
@@ -114,6 +119,29 @@
         <xsl:variable name="value" select="string(.)"/>
         <xsl:if test="not($layers/value[.=$value])">
           <ctl:message>Invalid query layer name "<xsl:value-of select="$value"/>"</ctl:message>
+          <ctl:fail/>
+        </xsl:if>
+      </xsl:for-each>
+    </ctl:code>
+  </ctl:test>
+
+  <ctl:test name="gfi:query_layers-queryable">
+    <ctl:param name="request"/>
+    <ctl:param name="capabilities"/>
+    <ctl:assertion>
+    Each of the values in the QUERY_LAYERS parameter must be a queryable layer.
+    That is, the layer attribute "queryable" must evaluate to true (xs:boolean); 
+    it may be inherited.
+    </ctl:assertion>
+    <ctl:comment>See ISO 19128:2005, cl. 7.2.4.7.2: Queryable layers</ctl:comment>
+    <ctl:comment>See ISO 19128:2005, cl. 7.4.1: General</ctl:comment>
+    <ctl:code>
+      <xsl:variable name="queryable-layers" 
+        select="$capabilities//wms:Layer[ancestor-or-self::*[xs:boolean(@queryable)]]/wms:Name" />
+      <xsl:for-each select="tokenize($request/ctl:param[upper-case(@name)='QUERY_LAYERS'], ',')">
+        <xsl:variable name="layer" select="string(.)"/>
+        <xsl:if test="empty(index-of($queryable-layers, $layer))">
+          <ctl:message>FAILURE: Name in QUERY_LAYERS is not a queryable layer: <xsl:value-of select="$layer"/></ctl:message>
           <ctl:fail/>
         </xsl:if>
       </xsl:for-each>
