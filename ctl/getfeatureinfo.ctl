@@ -10,7 +10,8 @@
  xmlns:main="urn:wms_client_test_suite/main"
  xmlns:basic="urn:wms_client_test_suite/basic_elements"
  xmlns:gm="urn:wms_client_test_suite/GetMap"
- xmlns:gfi="urn:wms_client_test_suite/GetFeatureInfo">
+ xmlns:gfi="urn:wms_client_test_suite/GetFeatureInfo"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 
   <ctl:test name="gfi:check-GetFeatureInfo-request">
     <ctl:param name="request"/>
@@ -130,18 +131,18 @@
     <ctl:param name="capabilities"/>
     <ctl:assertion>
     Each of the values in the QUERY_LAYERS parameter must be a queryable layer.
-    That is, the layer attribute "queryable" must evaluate to true (xs:boolean); 
+    That is, the layer attribute "queryable" must evaluate to true (xsd:boolean); 
     it may be inherited.
     </ctl:assertion>
     <ctl:comment>See ISO 19128:2005, cl. 7.2.4.7.2: Queryable layers</ctl:comment>
     <ctl:comment>See ISO 19128:2005, cl. 7.4.1: General</ctl:comment>
     <ctl:code>
       <xsl:variable name="queryable-layers" 
-        select="$capabilities//wms:Layer[ancestor-or-self::*[xs:boolean(@queryable)]]/wms:Name" />
+        select="$capabilities//wms:Layer[ancestor-or-self::*[xsd:boolean(@queryable)]]/wms:Name" />
       <xsl:for-each select="tokenize($request/ctl:param[upper-case(@name)='QUERY_LAYERS'], ',')">
         <xsl:variable name="layer" select="string(.)"/>
         <xsl:if test="empty(index-of($queryable-layers, $layer))">
-          <ctl:message>FAILURE: Name in QUERY_LAYERS is not a queryable layer: <xsl:value-of select="$layer"/></ctl:message>
+          <ctl:message>[FAILURE] Name in QUERY_LAYERS is not a queryable layer: <xsl:value-of select="$layer"/></ctl:message>
           <ctl:fail/>
         </xsl:if>
       </xsl:for-each>
