@@ -29,9 +29,11 @@
       </li>
     </ul>
 
-    <h2><a name="requirements">Test requirements</a></h2>
+    <h2>
+      <a name="requirements">Test requirements</a>
+    </h2>
     <p>
-  The server the client uses must be configurable, not hard-coded.
+  The WMS server the client uses must be configurable, not hard-coded.
     </p>
 
     <h2>Test approach</h2>
@@ -41,468 +43,771 @@
   Each of the GetCapabilities, GetMap, and GetFeatureInfo requests that the client makes are validated.
     </p>
 
+    <h2>Capabilities not tested</h2>
+    <p>
+  The client capabilities listed below are <strong>not</strong> currently tested. 
+  The relevant specification references are enclosed in square brackets.
+    </p>
+    <ul>
+      <li>GetMap: Valid BBOX extent [cl. 6.7.4, 7.3.3.6]</li>
+      <li>GetMap: BBOX values consistent with CRS [cl. 7.3.3.6]</li>
+      <li>GetCapabilities request with Format parameter [cl. 7.2.3.1]</li>
+      <li>Version negotiation: GetCapabilities with Version parameter 1.3.0 OR no Version parameter [cl. 6.2.4, 7.2.3.2]</li>
+      <li>Follow redirect response (status code 3xx) [cl. 6.4]</li>
+      <li>GetCapabilities request with UpdateSequence parameter [cl. 7.2.3.5, Table 4]</li>
+      <li>GetMap request for transparent picture [7.3.3.9]</li>
+      <li>GetMap request with BGCOLOR param [cl. 7.3.3.10]</li>
+      <li>GetMap: Commensurate aspect ratio [cl. 7.3.3.8]</li>
+      <li>GetFeatureInfo request with FEATURE_COUNT param [cl. 7.4.3.6]</li>
+      <li>Automatic CRS: GetMap request with "AUTO2" CRS reference [cl. 6.7.3.4]</li>
+      <li>Submit POST request [cl. 6.3.4]</li>
+      <li>GetMap request with TIME param [cl. 7.3.3.12]</li>
+      <li>GetMap request with ELEVATION param [cl. 7.3.3.13]</li>
+    </ul>
+
     <h2>Test identification</h2>
-    <p>The executable test cases comprising this test suite are briefly summarized below.</p>
+    <p>The executable test cases that comprise this test suite are briefly summarized below.</p>
 
     <div class="suite">
-      <h3>Test Suite name: main:suite</h3>
+      <h3>Test Suite name: main:ets-wms-client</h3>
       <h4>Partial WMS Client Test Suite</h4>
-      <p>Validates WMS Client Requests.</p>
-      <div> The root test is: <a href="#main:root">main:root</a></div>
+      <p>Validates WMS client requests.</p>
+      <div> The root test is: <a href="#main:wms-client">main:wms-client</a>
+      </div>
     </div>
     <div class="test">
-      <h3><a name="main:root">
-               Test Name:  main:root</a></h3>
+      <h3>
+        <a name="main:wms-client">
+               Test Name:  main:wms-client</a>
+      </h3>
       <div>
-        <p><b>Test Assertion: </b>The WMS client is valid.
+        <p>
+          <b>Test Assertion: </b>The WMS client is valid.
         </p>
-        <ul><b>List of parameters:</b><li><b>capabilities-url: </b></li>            
+        <ul>
+          <b>List of parameters:</b>
+          <li>
+            <b>capabilities-url: </b>
+          </li>            
 
         </ul>                
 
-        <div></div>
+        <div/>
         <ul>
-          <li>Invoke test: <a href="#gc:check-GetCapabilities-request">gc:check-GetCapabilities-request</a></li>            
+          <li>Invoke test: <a href="#gc:check-GetCapabilities-request">gc:check-GetCapabilities-request</a>
+          </li>            
 
-          <li>Invoke test: <a href="#gm:check-GetMap-request">gm:check-GetMap-request</a></li>            
+          <li>Invoke test: <a href="#gm:check-GetMap-request">gm:check-GetMap-request</a>
+          </li>            
 
-          <li>Invoke test: <a href="#gfi:check-GetFeatureInfo-request">gfi:check-GetFeatureInfo-request</a></li>            
+          <li>Invoke test: <a href="#gfi:check-GetFeatureInfo-request">gfi:check-GetFeatureInfo-request</a>
+          </li>            
 
         </ul>
       </div>
     </div>
     <div class="test">
-      <h3><a name="gc:check-GetCapabilities-request">
-               Test Name:  gc:check-GetCapabilities-request</a></h3>
+      <h3>
+        <a name="gc:check-GetCapabilities-request">
+               Test Name:  gc:check-GetCapabilities-request</a>
+      </h3>
       <div>
-        <p><b>Test Assertion: </b>The client GetCapabilities request is valid.
+        <p>
+          <b>Test Assertion: </b>The client GetCapabilities request is valid.
         </p>
-        <ul><b>List of parameters:</b><li><b>request: </b></li>            
+        <ul>
+          <b>List of parameters:</b>
+          <li>
+            <b>request: </b>
+          </li>            
 
-          <li><b>response: </b></li>            
+          <li>
+            <b>response: </b>
+          </li>            
 
-          <li><b>capabilities: </b></li>            
+          <li>
+            <b>capabilities: </b>
+          </li>            
 
         </ul>                
 
-        <div></div>
+        <div/>
         <ul>
-          <li>Invoke test: <a href="#basic:mandatory-params">basic:mandatory-params</a></li>            
+          <li>Invoke test: <a href="#basic:mandatory-params">basic:mandatory-params</a>
+          </li>            
 
-          <li>Invoke test: <a href="#gc:service">gc:service</a></li>            
+          <li>Invoke test: <a href="#gc:service">gc:service</a>
+          </li>            
 
-          <li>Invoke test: <a href="#basic:request">basic:request</a></li>            
+          <li>Invoke test: <a href="#basic:request">basic:request</a>
+          </li>            
 
         </ul>
       </div>
     </div>
     <div class="test">
-      <h3><a name="gc:service">
-               Test Name:  gc:service</a></h3>
+      <h3>
+        <a name="basic:mandatory-params">
+               Test Name:  basic:mandatory-params</a>
+      </h3>
       <div>
-        <p><b>Test Assertion: </b>The value of the SERVICE parameter is "WMS".
+        <p>
+          <b>Test Assertion: </b>Each of the mandatory parameters is present.
         </p>
-        <ul><b>List of parameters:</b><li><b>request: </b></li>            
+        <ul>
+          <b>List of parameters:</b>
+          <li>
+            <b>request: </b>
+          </li>            
+
+          <li>
+            <b>params: </b>
+          </li>            
 
         </ul>                
 
-        <div></div>
-        <ul></ul>
+        <div/>
+        <ul/>
       </div>
     </div>
     <div class="test">
-      <h3><a name="gm:check-GetMap-request">
-               Test Name:  gm:check-GetMap-request</a></h3>
+      <h3>
+        <a name="gc:service">
+               Test Name:  gc:service</a>
+      </h3>
       <div>
-        <p><b>Test Assertion: </b>The client GetMap request is valid.
+        <p>
+          <b>Test Assertion: </b>The value of the SERVICE parameter is "WMS".
         </p>
-        <ul><b>List of parameters:</b><li><b>request: </b></li>            
-
-          <li><b>response: </b></li>            
-
-          <li><b>capabilities: </b></li>            
+        <ul>
+          <b>List of parameters:</b>
+          <li>
+            <b>request: </b>
+          </li>            
 
         </ul>                
 
-        <div></div>
+        <div/>
+        <ul/>
+      </div>
+    </div>
+    <div class="test">
+      <h3>
+        <a name="basic:request">
+               Test Name:  basic:request</a>
+      </h3>
+      <div>
+        <p>
+          <b>Test Assertion: </b>The value of the REQUEST parameter is "{$expected-value}".
+        </p>
         <ul>
-          <li>Invoke test: <a href="#basic:mandatory-params">basic:mandatory-params</a></li>            
+          <b>List of parameters:</b>
+          <li>
+            <b>request: </b>
+          </li>            
 
-          <li>Invoke test: <a href="#basic:version">basic:version</a></li>            
+          <li>
+            <b>expected-value: </b>
+          </li>            
 
-          <li>Invoke test: <a href="#basic:request">basic:request</a></li>            
+        </ul>                
 
-          <li>Invoke test: <a href="#gm:core-map-request">gm:core-map-request</a></li>            
+        <div/>
+        <ul/>
+      </div>
+    </div>
+    <div class="test">
+      <h3>
+        <a name="gm:check-GetMap-request">
+               Test Name:  gm:check-GetMap-request</a>
+      </h3>
+      <div>
+        <p>
+          <b>Test Assertion: </b>The client GetMap request is valid.
+        </p>
+        <ul>
+          <b>List of parameters:</b>
+          <li>
+            <b>request: </b>
+          </li>            
 
-          <li>Invoke test: <a href="#gm:exceptions">gm:exceptions</a></li>            
+          <li>
+            <b>response: </b>
+          </li>            
+
+          <li>
+            <b>capabilities: </b>
+          </li>            
+
+        </ul>                
+
+        <div/>
+        <ul>
+          <li>Invoke test: <a href="#basic:mandatory-params">basic:mandatory-params</a>
+          </li>            
+
+          <li>Invoke test: <a href="#basic:version">basic:version</a>
+          </li>            
+
+          <li>Invoke test: <a href="#basic:request">basic:request</a>
+          </li>            
+
+          <li>Invoke test: <a href="#gm:core-map-request">gm:core-map-request</a>
+          </li>            
+
+          <li>Invoke test: <a href="#gm:exceptions">gm:exceptions</a>
+          </li>            
 
         </ul>
       </div>
     </div>
     <div class="test">
-      <h3><a name="basic:mandatory-params">
-               Test Name:  basic:mandatory-params</a></h3>
+      <h3>
+        <a name="basic:version">
+               Test Name:  basic:version</a>
+      </h3>
       <div>
-        <p><b>Test Assertion: </b>Each of the mandatory parameters is present.
+        <p>
+          <b>Test Assertion: </b>The value of the VERSION parameter is "1.3.0".
         </p>
-        <ul><b>List of parameters:</b><li><b>request: </b></li>            
-
-          <li><b>params: </b></li>            
-
-        </ul>                
-
-        <div></div>
-        <ul></ul>
-      </div>
-    </div>
-    <div class="test">
-      <h3><a name="basic:version">
-               Test Name:  basic:version</a></h3>
-      <div>
-        <p><b>Test Assertion: </b>The value of the VERSION parameter is "1.3.0".
-        </p>
-        <ul><b>List of parameters:</b><li><b>request: </b></li>            
-
-        </ul>                
-
-        <div></div>
-        <ul></ul>
-      </div>
-    </div>
-    <div class="test">
-      <h3><a name="basic:request">
-               Test Name:  basic:request</a></h3>
-      <div>
-        <p><b>Test Assertion: </b>The value of the REQUEST parameter is "{$expected-value}".
-        </p>
-        <ul><b>List of parameters:</b><li><b>request: </b></li>            
-
-          <li><b>expected-value: </b></li>            
-
-        </ul>                
-
-        <div></div>
-        <ul></ul>
-      </div>
-    </div>
-    <div class="test">
-      <h3><a name="gm:core-map-request">
-               Test Name:  gm:core-map-request</a></h3>
-      <div>
-        <p><b>Test Assertion: </b>The core parameters for a GetMap request are valid.
-        </p>
-        <ul><b>List of parameters:</b><li><b>request: </b></li>            
-
-          <li><b>capabilities: </b></li>            
-
-        </ul>                
-
-        <div></div>
         <ul>
-          <li>Invoke test: <a href="#gm:layers-count">gm:layers-count</a></li>            
+          <b>List of parameters:</b>
+          <li>
+            <b>request: </b>
+          </li>            
 
-          <li>Invoke test: <a href="#gm:layers-names">gm:layers-names</a></li>            
+        </ul>                
 
-          <li>Invoke test: <a href="#gm:styles-count">gm:styles-count</a></li>            
+        <div/>
+        <ul/>
+      </div>
+    </div>
+    <div class="test">
+      <h3>
+        <a name="gm:core-map-request">
+               Test Name:  gm:core-map-request</a>
+      </h3>
+      <div>
+        <p>
+          <b>Test Assertion: </b>The core parameters for a GetMap request are valid.
+        </p>
+        <ul>
+          <b>List of parameters:</b>
+          <li>
+            <b>request: </b>
+          </li>            
 
-          <li>Invoke test: <a href="#gm:styles-names">gm:styles-names</a></li>            
+          <li>
+            <b>capabilities: </b>
+          </li>            
 
-          <li>Invoke test: <a href="#gm:crs">gm:crs</a></li>            
+        </ul>                
 
-          <li>Invoke test: <a href="#gm:bbox-format">gm:bbox-format</a></li>            
+        <div/>
+        <ul>
+          <li>Invoke test: <a href="#gm:layers-count">gm:layers-count</a>
+          </li>            
 
-          <li>Invoke test: <a href="#gm:bbox-non-subsettable-layers">gm:bbox-non-subsettable-layers</a></li>            
+          <li>Invoke test: <a href="#gm:layers-names">gm:layers-names</a>
+          </li>            
 
-          <li>Invoke test: <a href="#gm:format">gm:format</a></li>            
+          <li>Invoke test: <a href="#gm:styles-count">gm:styles-count</a>
+          </li>            
 
-          <li>Invoke test: <a href="#gm:width-height">gm:width-height</a></li>            
+          <li>Invoke test: <a href="#gm:styles-names">gm:styles-names</a>
+          </li>            
 
-          <li>Invoke test: <a href="#gm:width-height">gm:width-height</a></li>            
+          <li>Invoke test: <a href="#gm:crs">gm:crs</a>
+          </li>            
 
-          <li>Invoke test: <a href="#gm:transparent">gm:transparent</a></li>            
+          <li>Invoke test: <a href="#gm:bbox-format">gm:bbox-format</a>
+          </li>            
+
+          <li>Invoke test: <a href="#gm:bbox-non-subsettable-layers">gm:bbox-non-subsettable-layers</a>
+          </li>            
+
+          <li>Invoke test: <a href="#gm:format">gm:format</a>
+          </li>            
+
+          <li>Invoke test: <a href="#gm:width-height">gm:width-height</a>
+          </li>            
+
+          <li>Invoke test: <a href="#gm:width-height">gm:width-height</a>
+          </li>            
+
+          <li>Invoke test: <a href="#gm:transparent">gm:transparent</a>
+          </li>            
 
         </ul>
       </div>
     </div>
     <div class="test">
-      <h3><a name="gm:layers-count">
-               Test Name:  gm:layers-count</a></h3>
+      <h3>
+        <a name="gm:layers-count">
+               Test Name:  gm:layers-count</a>
+      </h3>
       <div>
-        <p><b>Test Assertion: </b>The number of the LAYERS requested does not exceed the layer limit.
+        <p>
+          <b>Test Assertion: </b>The number of the LAYERS requested does not exceed the layer limit.
         </p>
-        <ul><b>List of parameters:</b><li><b>request: </b></li>            
-
-          <li><b>layer-limit: </b></li>            
-
-        </ul>                
-
-        <div></div>
-        <ul></ul>
-      </div>
-    </div>
-    <div class="test">
-      <h3><a name="gm:layers-names">
-               Test Name:  gm:layers-names</a></h3>
-      <div>
-        <p><b>Test Assertion: </b>Each of the values in the LAYERS parameter is a valid layer name.
-        </p>
-        <ul><b>List of parameters:</b><li><b>request: </b></li>            
-
-          <li><b>root-layer: </b></li>            
-
-        </ul>                
-
-        <div></div>
-        <ul></ul>
-      </div>
-    </div>
-    <div class="test">
-      <h3><a name="gm:styles-count">
-               Test Name:  gm:styles-count</a></h3>
-      <div>
-        <p><b>Test Assertion: </b>The number of styles requested matches the number of layers requested.
-        </p>
-        <ul><b>List of parameters:</b><li><b>request: </b></li>            
-
-        </ul>                
-
-        <div></div>
-        <ul></ul>
-      </div>
-    </div>
-    <div class="test">
-      <h3><a name="gm:styles-names">
-               Test Name:  gm:styles-names</a></h3>
-      <div>
-        <p><b>Test Assertion: </b>Each of the values in the STYLES parameter is a valid style for its matching layer.
-        </p>
-        <ul><b>List of parameters:</b><li><b>request: </b></li>            
-
-          <li><b>root-layer: </b></li>            
-
-        </ul>                
-
-        <div></div>
-        <ul></ul>
-      </div>
-    </div>
-    <div class="test">
-      <h3><a name="gm:crs">
-               Test Name:  gm:crs</a></h3>
-      <div>
-        <p><b>Test Assertion: </b>The CRS is valid style for each requested layer.
-        </p>
-        <ul><b>List of parameters:</b><li><b>request: </b></li>            
-
-          <li><b>root-layer: </b></li>            
-
-        </ul>                
-
-        <div></div>
-        <ul></ul>
-      </div>
-    </div>
-    <div class="test">
-      <h3><a name="gm:bbox-format">
-               Test Name:  gm:bbox-format</a></h3>
-      <div>
-        <p><b>Test Assertion: </b>The BBOX is a list of comma-separated real numbers in the form "minx,miny,maxx,maxy".
-        </p>
-        <ul><b>List of parameters:</b><li><b>request: </b></li>            
-
-        </ul>                
-
-        <div></div>
-        <ul></ul>
-      </div>
-    </div>
-    <div class="test">
-      <h3><a name="gm:bbox-non-subsettable-layers">
-               Test Name:  gm:bbox-non-subsettable-layers</a></h3>
-      <div>
-        <p><b>Test Assertion: </b>For layers that are not subsettable, the BBOX parameter must match the bounding box declared for the layer.
-        </p>
-        <ul><b>List of parameters:</b><li><b>request: </b></li>            
-
-          <li><b>root-layer: </b></li>            
-
-        </ul>                
-
-        <div></div>
-        <ul></ul>
-      </div>
-    </div>
-    <div class="test">
-      <h3><a name="gm:format">
-               Test Name:  gm:format</a></h3>
-      <div>
-        <p><b>Test Assertion: </b>The value of the FORMAT parameter is one of the formats listed in the service metadata.
-        </p>
-        <ul><b>List of parameters:</b><li><b>request: </b></li>            
-
-          <li><b>getmap-element: </b></li>            
-
-        </ul>                
-
-        <div></div>
-        <ul></ul>
-      </div>
-    </div>
-    <div class="test">
-      <h3><a name="gm:width-height">
-               Test Name:  gm:width-height</a></h3>
-      <div>
-        <p><b>Test Assertion: </b>{$param} is a positive integer value that does not exceed the declared Max{$param}.
-        </p>
-        <ul><b>List of parameters:</b><li><b>request: </b></li>            
-
-          <li><b>param: </b></li>            
-
-          <li><b>limit: </b></li>            
-
-        </ul>                
-
-        <div></div>
-        <ul></ul>
-      </div>
-    </div>
-    <div class="test">
-      <h3><a name="gm:transparent">
-               Test Name:  gm:transparent</a></h3>
-      <div>
-        <p><b>Test Assertion: </b>The value of the TRANSPARENT parameter is 'TRUE' or 'FALSE'.
-        </p>
-        <ul><b>List of parameters:</b><li><b>request: </b></li>            
-
-        </ul>                
-
-        <div></div>
-        <ul></ul>
-      </div>
-    </div>
-    <div class="test">
-      <h3><a name="gm:exceptions">
-               Test Name:  gm:exceptions</a></h3>
-      <div>
-        <p><b>Test Assertion: </b>The value of the EXCEPTIONS parameter is one of the formats listed in the service metadata.
-        </p>
-        <ul><b>List of parameters:</b><li><b>request: </b></li>            
-
-          <li><b>exception-element: </b></li>            
-
-        </ul>                
-
-        <div></div>
-        <ul></ul>
-      </div>
-    </div>
-    <div class="test">
-      <h3><a name="gfi:check-GetFeatureInfo-request">
-               Test Name:  gfi:check-GetFeatureInfo-request</a></h3>
-      <div>
-        <p><b>Test Assertion: </b>The client GetFeatureInfo request is valid.
-        </p>
-        <ul><b>List of parameters:</b><li><b>request: </b></li>            
-
-          <li><b>response: </b></li>            
-
-          <li><b>capabilities: </b></li>            
-
-        </ul>                
-
-        <div></div>
         <ul>
-          <li>Invoke test: <a href="#basic:mandatory-params">basic:mandatory-params</a></li>            
+          <b>List of parameters:</b>
+          <li>
+            <b>request: </b>
+          </li>            
 
-          <li>Invoke test: <a href="#basic:version">basic:version</a></li>            
+          <li>
+            <b>layer-limit: </b>
+          </li>            
 
-          <li>Invoke test: <a href="#basic:request">basic:request</a></li>            
+        </ul>                
 
-          <li>Invoke test: <a href="#gm:core-map-request">gm:core-map-request</a></li>            
+        <div/>
+        <ul/>
+      </div>
+    </div>
+    <div class="test">
+      <h3>
+        <a name="gm:layers-names">
+               Test Name:  gm:layers-names</a>
+      </h3>
+      <div>
+        <p>
+          <b>Test Assertion: </b>Each of the values in the LAYERS parameter is a valid layer name.
+        </p>
+        <ul>
+          <b>List of parameters:</b>
+          <li>
+            <b>request: </b>
+          </li>            
 
-          <li>Invoke test: <a href="#gfi:query_layers-count">gfi:query_layers-count</a></li>            
+          <li>
+            <b>root-layer: </b>
+          </li>            
 
-          <li>Invoke test: <a href="#gfi:query_layers-values">gfi:query_layers-values</a></li>            
+        </ul>                
 
-          <li>Invoke test: <a href="#gfi:info_format">gfi:info_format</a></li>            
+        <div/>
+        <ul/>
+      </div>
+    </div>
+    <div class="test">
+      <h3>
+        <a name="gm:styles-count">
+               Test Name:  gm:styles-count</a>
+      </h3>
+      <div>
+        <p>
+          <b>Test Assertion: </b>The number of styles requested matches the number of layers requested.
+        </p>
+        <ul>
+          <b>List of parameters:</b>
+          <li>
+            <b>request: </b>
+          </li>            
 
-          <li>Invoke test: <a href="#gfi:i">gfi:i</a></li>            
+        </ul>                
 
-          <li>Invoke test: <a href="#gfi:j">gfi:j</a></li>            
+        <div/>
+        <ul/>
+      </div>
+    </div>
+    <div class="test">
+      <h3>
+        <a name="gm:styles-names">
+               Test Name:  gm:styles-names</a>
+      </h3>
+      <div>
+        <p>
+          <b>Test Assertion: </b>Each of the values in the STYLES parameter is a valid style for its matching layer.
+        </p>
+        <ul>
+          <b>List of parameters:</b>
+          <li>
+            <b>request: </b>
+          </li>            
+
+          <li>
+            <b>root-layer: </b>
+          </li>            
+
+        </ul>                
+
+        <div/>
+        <ul/>
+      </div>
+    </div>
+    <div class="test">
+      <h3>
+        <a name="gm:crs">
+               Test Name:  gm:crs</a>
+      </h3>
+      <div>
+        <p>
+          <b>Test Assertion: </b>The CRS is valid style for each requested layer.
+        </p>
+        <ul>
+          <b>List of parameters:</b>
+          <li>
+            <b>request: </b>
+          </li>            
+
+          <li>
+            <b>root-layer: </b>
+          </li>            
+
+        </ul>                
+
+        <div/>
+        <ul/>
+      </div>
+    </div>
+    <div class="test">
+      <h3>
+        <a name="gm:bbox-format">
+               Test Name:  gm:bbox-format</a>
+      </h3>
+      <div>
+        <p>
+          <b>Test Assertion: </b>The BBOX is a list of comma-separated real numbers in the form "minx,miny,maxx,maxy".
+        </p>
+        <ul>
+          <b>List of parameters:</b>
+          <li>
+            <b>request: </b>
+          </li>            
+
+        </ul>                
+
+        <div/>
+        <ul/>
+      </div>
+    </div>
+    <div class="test">
+      <h3>
+        <a name="gm:bbox-non-subsettable-layers">
+               Test Name:  gm:bbox-non-subsettable-layers</a>
+      </h3>
+      <div>
+        <p>
+          <b>Test Assertion: </b>For layers that are not subsettable, the BBOX parameter must match the bounding box declared for the layer.
+        </p>
+        <ul>
+          <b>List of parameters:</b>
+          <li>
+            <b>request: </b>
+          </li>            
+
+          <li>
+            <b>root-layer: </b>
+          </li>            
+
+        </ul>                
+
+        <div/>
+        <ul/>
+      </div>
+    </div>
+    <div class="test">
+      <h3>
+        <a name="gm:format">
+               Test Name:  gm:format</a>
+      </h3>
+      <div>
+        <p>
+          <b>Test Assertion: </b>The value of the FORMAT parameter is one of the formats listed in the service metadata.
+        </p>
+        <ul>
+          <b>List of parameters:</b>
+          <li>
+            <b>request: </b>
+          </li>            
+
+          <li>
+            <b>getmap-element: </b>
+          </li>            
+
+        </ul>                
+
+        <div/>
+        <ul/>
+      </div>
+    </div>
+    <div class="test">
+      <h3>
+        <a name="gm:width-height">
+               Test Name:  gm:width-height</a>
+      </h3>
+      <div>
+        <p>
+          <b>Test Assertion: </b>{$param} is a positive integer value that does not exceed the declared Max{$param}.
+        </p>
+        <ul>
+          <b>List of parameters:</b>
+          <li>
+            <b>request: </b>
+          </li>            
+
+          <li>
+            <b>param: </b>
+          </li>            
+
+          <li>
+            <b>limit: </b>
+          </li>            
+
+        </ul>                
+
+        <div/>
+        <ul/>
+      </div>
+    </div>
+    <div class="test">
+      <h3>
+        <a name="gm:transparent">
+               Test Name:  gm:transparent</a>
+      </h3>
+      <div>
+        <p>
+          <b>Test Assertion: </b>The value of the TRANSPARENT parameter is 'TRUE' or 'FALSE'.
+        </p>
+        <ul>
+          <b>List of parameters:</b>
+          <li>
+            <b>request: </b>
+          </li>            
+
+        </ul>                
+
+        <div/>
+        <ul/>
+      </div>
+    </div>
+    <div class="test">
+      <h3>
+        <a name="gm:exceptions">
+               Test Name:  gm:exceptions</a>
+      </h3>
+      <div>
+        <p>
+          <b>Test Assertion: </b>The value of the EXCEPTIONS parameter is one of the formats listed in the service metadata.
+        </p>
+        <ul>
+          <b>List of parameters:</b>
+          <li>
+            <b>request: </b>
+          </li>            
+
+          <li>
+            <b>exception-element: </b>
+          </li>            
+
+        </ul>                
+
+        <div/>
+        <ul/>
+      </div>
+    </div>
+    <div class="test">
+      <h3>
+        <a name="gfi:check-GetFeatureInfo-request">
+               Test Name:  gfi:check-GetFeatureInfo-request</a>
+      </h3>
+      <div>
+        <p>
+          <b>Test Assertion: </b>The client GetFeatureInfo request is valid.
+        </p>
+        <ul>
+          <b>List of parameters:</b>
+          <li>
+            <b>request: </b>
+          </li>            
+
+          <li>
+            <b>response: </b>
+          </li>            
+
+          <li>
+            <b>capabilities: </b>
+          </li>            
+
+        </ul>                
+
+        <div/>
+        <ul>
+          <li>Invoke test: <a href="#basic:mandatory-params">basic:mandatory-params</a>
+          </li>            
+
+          <li>Invoke test: <a href="#basic:version">basic:version</a>
+          </li>            
+
+          <li>Invoke test: <a href="#basic:request">basic:request</a>
+          </li>            
+
+          <li>Invoke test: <a href="#gm:core-map-request">gm:core-map-request</a>
+          </li>            
+
+          <li>Invoke test: <a href="#gfi:query_layers-count">gfi:query_layers-count</a>
+          </li>            
+
+          <li>Invoke test: <a href="#gfi:query_layers-values">gfi:query_layers-values</a>
+          </li>            
+
+          <li>Invoke test: <a href="#gfi:query_layers-queryable">gfi:query_layers-queryable</a>
+          </li>            
+
+          <li>Invoke test: <a href="#gfi:info_format">gfi:info_format</a>
+          </li>            
+
+          <li>Invoke test: <a href="#gfi:i">gfi:i</a>
+          </li>            
+
+          <li>Invoke test: <a href="#gfi:j">gfi:j</a>
+          </li>            
 
         </ul>
       </div>
     </div>
     <div class="test">
-      <h3><a name="gfi:query_layers-count">
-               Test Name:  gfi:query_layers-count</a></h3>
+      <h3>
+        <a name="gfi:query_layers-count">
+               Test Name:  gfi:query_layers-count</a>
+      </h3>
       <div>
-        <p><b>Test Assertion: </b>The QUERY_LAYERS parameter contains at least one layer name.
+        <p>
+          <b>Test Assertion: </b>The QUERY_LAYERS parameter contains at least one layer name.
         </p>
-        <ul><b>List of parameters:</b><li><b>request: </b></li>            
+        <ul>
+          <b>List of parameters:</b>
+          <li>
+            <b>request: </b>
+          </li>            
 
         </ul>                
 
-        <div></div>
-        <ul></ul>
+        <div/>
+        <ul/>
       </div>
     </div>
     <div class="test">
-      <h3><a name="gfi:query_layers-values">
-               Test Name:  gfi:query_layers-values</a></h3>
+      <h3>
+        <a name="gfi:query_layers-values">
+               Test Name:  gfi:query_layers-values</a>
+      </h3>
       <div>
-        <p><b>Test Assertion: </b>Each of the values in the QUERY_LAYERS parameter is a layer from the original GetMap request.
+        <p>
+          <b>Test Assertion: </b>Each of the values in the QUERY_LAYERS parameter is a layer from the original GetMap request.
         </p>
-        <ul><b>List of parameters:</b><li><b>request: </b></li>            
+        <ul>
+          <b>List of parameters:</b>
+          <li>
+            <b>request: </b>
+          </li>            
 
         </ul>                
 
-        <div></div>
-        <ul></ul>
+        <div/>
+        <ul/>
       </div>
     </div>
     <div class="test">
-      <h3><a name="gfi:info_format">
-               Test Name:  gfi:info_format</a></h3>
+      <h3>
+        <a name="gfi:query_layers-queryable">
+               Test Name:  gfi:query_layers-queryable</a>
+      </h3>
       <div>
-        <p><b>Test Assertion: </b>The value of the INFO_FORMAT parameter is one of the formats listed in the service metadata.
-        </p>
-        <ul><b>List of parameters:</b><li><b>request: </b></li>            
+        <p>
+          <b>Test Assertion: </b>
+               Each of the values in the QUERY_LAYERS parameter must be a queryable layer.
+               That is, the layer attribute "queryable" must evaluate to true (xsd:boolean); 
+               it may be inherited.
 
-          <li><b>getfeatureinfo-element: </b></li>            
+        </p>
+        <ul>
+          <b>List of parameters:</b>
+          <li>
+            <b>request: </b>
+          </li>            
+
+          <li>
+            <b>capabilities: </b>
+          </li>            
 
         </ul>                
 
-        <div></div>
-        <ul></ul>
+        <p>
+          <b>Test description </b> See ISO 19128:2005, cl. 7.2.4.7.2: Queryable layers.  See ISO 19128:2005, cl. 7.4.1: General.
+        </p>                
+
+        <div/>
+        <ul/>
       </div>
     </div>
     <div class="test">
-      <h3><a name="gfi:i">
-               Test Name:  gfi:i</a></h3>
+      <h3>
+        <a name="gfi:info_format">
+               Test Name:  gfi:info_format</a>
+      </h3>
       <div>
-        <p><b>Test Assertion: </b>The value of the I parameter is an integer between 0 and the maximum value of the i axis (WIDTH-1).
+        <p>
+          <b>Test Assertion: </b>The value of the INFO_FORMAT parameter is one of the formats listed in the service metadata.
         </p>
-        <ul><b>List of parameters:</b><li><b>request: </b></li>            
+        <ul>
+          <b>List of parameters:</b>
+          <li>
+            <b>request: </b>
+          </li>            
+
+          <li>
+            <b>getfeatureinfo-element: </b>
+          </li>            
 
         </ul>                
 
-        <div></div>
-        <ul></ul>
+        <div/>
+        <ul/>
       </div>
     </div>
     <div class="test">
-      <h3><a name="gfi:j">
-               Test Name:  gfi:j</a></h3>
+      <h3>
+        <a name="gfi:i">
+               Test Name:  gfi:i</a>
+      </h3>
       <div>
-        <p><b>Test Assertion: </b>The value of the J parameter is an integer between 0 and the maximum value of the i axis (HEIGHT-1).
+        <p>
+          <b>Test Assertion: </b>The value of the I parameter is an integer between 0 and the maximum value of the i axis (WIDTH-1).
         </p>
-        <ul><b>List of parameters:</b><li><b>request: </b></li>            
+        <ul>
+          <b>List of parameters:</b>
+          <li>
+            <b>request: </b>
+          </li>            
 
         </ul>                
 
-        <div></div>
-        <ul></ul>
+        <div/>
+        <ul/>
+      </div>
+    </div>
+    <div class="test">
+      <h3>
+        <a name="gfi:j">
+               Test Name:  gfi:j</a>
+      </h3>
+      <div>
+        <p>
+          <b>Test Assertion: </b>The value of the J parameter is an integer between 0 and the maximum value of the i axis (HEIGHT-1).
+        </p>
+        <ul>
+          <b>List of parameters:</b>
+          <li>
+            <b>request: </b>
+          </li>            
+
+        </ul>                
+
+        <div/>
+        <ul/>
       </div>
     </div>
 

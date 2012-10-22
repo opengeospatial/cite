@@ -134,8 +134,8 @@
     That is, the layer attribute "queryable" must evaluate to true (xsd:boolean); 
     it may be inherited.
     </ctl:assertion>
-    <ctl:comment>See ISO 19128:2005, cl. 7.2.4.7.2: Queryable layers</ctl:comment>
-    <ctl:comment>See ISO 19128:2005, cl. 7.4.1: General</ctl:comment>
+    <ctl:comment>See ISO 19128:2005, cl. 7.2.4.7.2: Queryable layers.</ctl:comment>
+    <ctl:comment>See ISO 19128:2005, cl. 7.4.1: General.</ctl:comment>
     <ctl:code>
       <xsl:variable name="queryable-layers" 
         select="$capabilities//wms:Layer[ancestor-or-self::*[xsd:boolean(@queryable)]]/wms:Name" />
