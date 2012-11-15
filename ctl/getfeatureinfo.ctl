@@ -138,7 +138,7 @@
     <ctl:comment>See ISO 19128:2005, cl. 7.4.1: General.</ctl:comment>
     <ctl:code>
       <xsl:variable name="queryable-layers" 
-        select="$capabilities//wms:Layer[ancestor-or-self::*[xsd:boolean(@queryable)]]/wms:Name" />
+        select="$capabilities//wms:Layer[xsd:boolean(@queryable)]/wms:Name" />
       <xsl:for-each select="tokenize($request/ctl:param[upper-case(@name)='QUERY_LAYERS'], ',')">
         <xsl:variable name="layer" select="string(.)"/>
         <xsl:if test="empty(index-of($queryable-layers, $layer))">
