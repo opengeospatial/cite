@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Add entry to TE_BASE/config.xml (/config/scripts/organization) -->
+<!-- Add this entry to TE_BASE/config.xml (//organization/standard) -->
 <organization>
   <name>OGC</name>
   <standard>
-    <name>WMS - Client</name>
+    <name>Web Map Server (WMS) - Client</name>
     <version>
       <name>1.3.0</name>
       <suite>

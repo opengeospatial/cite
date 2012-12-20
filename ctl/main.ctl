@@ -16,6 +16,7 @@
   <ctl:suite name="main:ets-wms-client">
     <ctl:title>Partial WMS Client Test Suite</ctl:title>
     <ctl:description>Validates WMS Client Requests.</ctl:description>
+    <ctl:link title="Test suite overview">about/wms-client/1.3.0/</ctl:link>
     <ctl:starting-test>main:wms-client</ctl:starting-test>
     <ctl:form>
       <xsl:text>Enter the Capabilities URL:</xsl:text>
