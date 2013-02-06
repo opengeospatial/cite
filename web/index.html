@@ -38,10 +38,14 @@
 
     <h2>Test approach</h2>
     <p>
-  This test suite creates a proxy service around a WMS 1.3.0 service of the user's choosing.
-  The user configures a WMS 1.3.0 client to use the proxy service, and exercises the client.
-  Each of the GetCapabilities, GetMap, and GetFeatureInfo requests that the client makes are validated.
-    </p>
+  This test suite creates a proxy service to interact with the WMS 1.3.0 reference implementation 
+  available at this endpoint: <br />
+  <a href="http://ri.opengeospatial.org:8680/degree-wms-130/services?&service=WMS&version=1.3.0&request=GetCapabilities" 
+  target="_blank">http://ri.opengeospatial.org:8680/degree-wms-130/services</a>.</p>
+  
+  <p>The user configures a client to use the proxy service, and exercises the client.
+  Each of the GetCapabilities, GetMap, and GetFeatureInfo requests that the client makes are 
+  validated.</p>
 
     <h2>Capabilities not tested</h2>
     <p>

@@ -18,23 +18,16 @@
     <ctl:description>Validates WMS Client Requests.</ctl:description>
     <ctl:link title="Test suite overview">about/wms-client/1.3.0/</ctl:link>
     <ctl:starting-test>main:wms-client</ctl:starting-test>
-    <ctl:form>
-      <xsl:text>Enter the Capabilities URL:</xsl:text>
-      <xhtml:br/>
-      <xhtml:input name="capabilities-url" size="100" type="text" value=""/>
-      <xhtml:br/>
-      <xhtml:input type="submit" value="OK"/>
-    </ctl:form>
   </ctl:suite>
 
   <ctl:test name="main:wms-client">
-    <ctl:param name="capabilities-url"/>
-    <ctl:assertion>The WMS client is valid.</ctl:assertion>
-    <ctl:code>
+    <ctl:assertion>The WMS client constructs valid requests.</ctl:assertion>
+    <ctl:code> 
       <xsl:variable name="capabilities">
         <ctl:request>
           <ctl:url>
-            <xsl:value-of select="$capabilities-url"/>
+            <xsl:value-of 
+         select="'http://ri.opengeospatial.org:8680/degree-wms-130/services?&amp;service=WMS&amp;version=1.3.0&amp;request=GetCapabilities'"/>
           </ctl:url>
           <ctl:method>GET</ctl:method>
         </ctl:request>
