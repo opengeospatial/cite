@@ -111,9 +111,9 @@
             <xhtml:br/>
             <xsl:text>Leave this form open while you use the client.</xsl:text>
             <xhtml:br/>
-            <xsl:text>Press the button when you are finished.</xsl:text>
+            <xsl:text>Press the 'Stop testing' button when you are finished.</xsl:text>
             <xhtml:br/>
-            <xhtml:input type="submit" value="Done Testing"/>
+            <xhtml:input type="submit" value="Stop testing"/>
           </ctl:form>
         </xsl:when>
         <xsl:otherwise>
