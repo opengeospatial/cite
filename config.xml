@@ -15,6 +15,7 @@
       </suite>
       <revision>
         <name>r1</name>
+        <status>Beta</status>
         <sources>
           <source>wms-client/1.3.0/ctl</source>
         </sources>
