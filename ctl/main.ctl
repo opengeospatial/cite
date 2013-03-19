@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ctl:package
- xmlns:ctl="http://www.occamlab.com/ctl"
- xmlns:ctlp="http://www.occamlab.com/te/parsers"
- xmlns:fn="http://www.w3.org/2005/xpath-functions"
- xmlns:wms="http://www.opengis.net/wms"
- xmlns:xlink="http://www.w3.org/1999/xlink"
- xmlns:xhtml="http://www.w3.org/1999/xhtml"
- xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
- xmlns:main="urn:wms_client_test_suite/main"
- xmlns:basic="urn:wms_client_test_suite/basic_elements"
- xmlns:gc="urn:wms_client_test_suite/GetCapabilities"
- xmlns:gm="urn:wms_client_test_suite/GetMap"
- xmlns:gfi="urn:wms_client_test_suite/GetFeatureInfo">
+  xmlns:ctl="http://www.occamlab.com/ctl"
+  xmlns:ctlp="http://www.occamlab.com/te/parsers"
+  xmlns:fn="http://www.w3.org/2005/xpath-functions"
+  xmlns:wms="http://www.opengis.net/wms"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+  xmlns:main="urn:wms_client_test_suite/main"
+  xmlns:basic="urn:wms_client_test_suite/basic_elements"
+  xmlns:gc="urn:wms_client_test_suite/GetCapabilities"
+  xmlns:gm="urn:wms_client_test_suite/GetMap"
+  xmlns:gfi="urn:wms_client_test_suite/GetFeatureInfo"
+  xmlns:saxon="http://saxon.sf.net/">
 
   <ctl:suite name="main:ets-wms-client">
     <ctl:title>Partial WMS Client Test Suite</ctl:title>
@@ -27,7 +28,7 @@
         <ctl:request>
           <ctl:url>
             <xsl:value-of 
-         select="'http://ri.opengeospatial.org:8680/degree-wms-130/services?&amp;service=WMS&amp;version=1.3.0&amp;request=GetCapabilities'"/>
+         select="'http://ri.opengeospatial.org:8680/degree-wms-130/services?service=WMS&amp;version=1.3.0&amp;request=GetCapabilities'"/>
           </ctl:url>
           <ctl:method>GET</ctl:method>
         </ctl:request>
@@ -104,7 +105,7 @@
         </xsl:when>
         <xsl:when test="string-length($monitor-urls/wms:GetCapabilities) gt 0 and string-length($monitor-urls/wms:GetMap) gt 0">
           <ctl:form>
-            <xsl:text>Configure the client to use this proxy URL:</xsl:text>
+            <xsl:text>Configure the client to use this proxy capabilities URL:</xsl:text>
             <xhtml:br/>
             <xsl:value-of select="$monitor-urls/wms:GetCapabilities"/>
             <xhtml:br/>
@@ -121,6 +122,27 @@
           <ctl:fail/>
         </xsl:otherwise>
       </xsl:choose>
+      
+      <ctl:call-test name="main:check-coverage">
+        <ctl:with-param name="coverage-report-uri" select="concat(ctl:getSessionDir(),'/coverage.xml')" />
+      </ctl:call-test>
+    </ctl:code>
+  </ctl:test>
+
+  <ctl:test name="main:check-coverage">
+    <?ctl-msg name="coverage" ?>
+    <ctl:param name="coverage-report-uri"/>
+    <ctl:assertion>Service capabilities were fully covered.</ctl:assertion>
+    <ctl:code>
+      <ctl:message>Coverage report located at <xsl:value-of select="$coverage-report-uri"/></ctl:message>
+      <xsl:variable name="coverage-report" select="doc($coverage-report-uri)" />
+      <xsl:if test="count($coverage-report//param) > 0">
+        <ctl:message>[FAILURE] Some service capabilities were not exercised.</ctl:message>
+        <ctl:message>
+          <xsl:value-of select="saxon:serialize($coverage-report, 'coverage')" />
+        </ctl:message>
+        <ctl:fail/>
+      </xsl:if>
     </ctl:code>
   </ctl:test>
 

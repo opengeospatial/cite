@@ -43,11 +43,15 @@
   <a href="http://ri.opengeospatial.org:8680/degree-wms-130/services?&service=WMS&version=1.3.0&request=GetCapabilities" 
   target="_blank">http://ri.opengeospatial.org:8680/degree-wms-130/services</a>.</p>
   
-  <p>The user configures a client to use the proxy service, and exercises the client.
-  Each of the GetCapabilities, GetMap, and GetFeatureInfo requests that the client makes are 
-  validated.</p>
+  <p>The tester configures the client to use the proxy service, and uses it to interact 
+  with the reference implementation. Each of the GetCapabilities, GetMap, and GetFeatureInfo 
+  requests that the client submits are validated.</p>
+  
+  <p>The client is expected to fully exercise the service and all advertised options. 
+  A brief coverage report will indicate which service capabilities were not invoked 
+  during the test session.</p>
 
-    <h2>Capabilities not tested</h2>
+  <h2>Capabilities not tested</h2>
     <p>
   The client capabilities listed below are <strong>not</strong> currently tested. 
   The relevant specification references are enclosed in square brackets.
