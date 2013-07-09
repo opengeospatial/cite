@@ -15,7 +15,7 @@
   xmlns:saxon="http://saxon.sf.net/">
 
   <ctl:suite name="main:ets-wms-client">
-    <ctl:title>Partial WMS Client Test Suite</ctl:title>
+    <ctl:title>WMS Client Test Suite</ctl:title>
     <ctl:description>Validates WMS Client Requests.</ctl:description>
     <ctl:link title="Test suite overview">about/wms-client/1.3.0/</ctl:link>
     <ctl:starting-test>main:wms-client</ctl:starting-test>
@@ -105,7 +105,16 @@
         </xsl:when>
         <xsl:when test="string-length($monitor-urls/wms:GetCapabilities) gt 0 and string-length($monitor-urls/wms:GetMap) gt 0">
           <ctl:form>
-            <xsl:text>Configure the client to use this proxy capabilities URL:</xsl:text>
+          
+           <h2>WMS 1.3 Client Test Suite</h2>
+           <p>This test verifies that a WMS 1.3 client executes valid requests to a WMS 1.3 server. Each of the GetCapabilities, GetMap, and GetFeatureInfo requests that the client submits are validated.</p>
+           
+        	<p>The details of all the requests that are required to be executed by the client are documented <a href="../../../about/wms-client/1.3.0/web/" target="_blank">here</a>.</p>
+           
+           <p>The test creates a proxy service that interacts with the <a href="http://ri.opengeospatial.org:8680/degree-wms-130/services">WMS 1.3 Reference Implementation</a> available at the OGC Server.</p>
+           
+          
+            <xsl:text>To start testing, configure the client to use the following endpoint URL, which is a proxy to the WMS 1.3 Server Reference Implementation.</xsl:text>
             <xhtml:br/>
             <xsl:value-of select="$monitor-urls/wms:GetCapabilities"/>
             <xhtml:br/>
@@ -114,6 +123,8 @@
             <xhtml:br/>
             <xsl:text>Press the 'Stop testing' button when you are finished.</xsl:text>
             <xhtml:br/>
+             <xhtml:br/>
+              <xhtml:br/>
             <xhtml:input type="submit" value="Stop testing"/>
           </ctl:form>
         </xsl:when>
