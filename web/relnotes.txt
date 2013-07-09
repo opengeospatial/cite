@@ -1,0 +1,9 @@
+WMS Client 1.3.0 Test Suite Release Notes
+
+Summary of Changes
+
+Changes in r3 (2013-07-09)
+---------------------------
+- Updated user information on the test form
+- Updated general documentation.
+
