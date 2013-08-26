@@ -14,7 +14,7 @@
         <description>Validates WMS 1.3 service requests.</description>
       </suite>
       <revision>
-        <name>r2</name>
+        <name>r3</name>
         <status>Beta</status>
         <sources>
           <source>wms-client/1.3.0/ctl</source>
