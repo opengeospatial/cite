@@ -28,7 +28,7 @@
         <ctl:request>
           <ctl:url>
             <xsl:value-of 
-         select="'http://ri.opengeospatial.org:8680/degree-wms-130/services?service=WMS&amp;version=1.3.0&amp;request=GetCapabilities'"/>
+         select="'http://cite.lat-lon.de/deegree-webservices-3.3.6-2/services/wms?service=WMS&amp;version=1.3.0&amp;request=GetCapabilities'"/>
           </ctl:url>
           <ctl:method>GET</ctl:method>
         </ctl:request>
