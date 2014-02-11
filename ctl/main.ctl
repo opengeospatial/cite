@@ -109,7 +109,7 @@
            <h2>WMS 1.3 Client Test Suite</h2>
            <p>This test verifies that a WMS 1.3 client executes valid requests to a WMS 1.3 server. Each of the GetCapabilities, GetMap, and GetFeatureInfo requests that the client submits are validated.</p>
            
-        	<p>The details of all the requests that are required to be executed by the client are documented <a href="../../../about/wms-client/1.3.0/web/" target="_blank">here</a>.</p>
+        	<p>The details of all the requests that are required to be executed by the client are documented <a href="../web/" target="_blank">here</a>.</p>
            
            <p>The test creates a proxy service that interacts with the <a href="http://ri.opengeospatial.org:8680/degree-wms-130/services">WMS 1.3 Reference Implementation</a> available at the OGC Server.</p>
            
