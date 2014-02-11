@@ -2,10 +2,10 @@ WMS Client 1.3.0 Test Suite Release Notes
 
 Summary of Changes
 
-r4 (2014-02-06)
+r4 (2014-02-11)
 ---------------
 - Changed endpoint of target WMS (to reference implementation hosted by lat/lon).
-
+- Updated main.ctl to point to correct link to the web folder
 
 r3 (2013-07-09)
 ---------------
