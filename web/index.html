@@ -4,7 +4,7 @@
     <title>WMS 1.3.0 Client Test Suite</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <style type="text/css">
-	body {
+	  body {
       color: black;
       background: white;
       font-family: Georgia, serif;
@@ -14,9 +14,18 @@
       color: #000099;
       text-align: left;
     }
-    h1 { font-size: 1.50em; margin-top: 2em;}
-    h2 { font-size: 1.25em; }
-    h3 { font-size: 1em; margin-bottom: 0.5em; background: #eeeeee; }
+    h1 {font-size: 1.50em; margin-top: 2em;}
+    h2 {font-size: 1.25em; }
+    h3 {font-size: 1em; margin-bottom: 0.5em; background: #eeeeee; }
+    th {font-weight: bold; 
+      font-family: Verdana, sans-serif;
+	    text-align: left;
+      vertical-align: top;
+      background: #eeeeee;
+      color: #000099;
+    }
+    th, td {padding: 0.25em;}
+    dl { margin-top: 0em;}
     </style>
   </head>
   <body>
@@ -29,22 +38,97 @@
       </li>
     </ul>
 
-   
-
     <h2>Test approach</h2>
     <p>
-  This test suite creates a proxy service to interact with the WMS 1.3.0 reference implementation 
+  This test suite creates an intercepting proxy for interacting with the WMS 1.3.0 reference implementation 
   available at this endpoint: <br />
-  <a href="http://ri.opengeospatial.org:8680/degree-wms-130/services?&service=WMS&version=1.3.0&request=GetCapabilities" 
-  target="_blank">http://ri.opengeospatial.org:8680/degree-wms-130/services</a>.</p>
+  <a href="http://cite.lat-lon.de/deegree-webservices-3.3.6-2/services/wms?service=WMS&version=1.3.0&request=GetCapabilities" 
+  target="_blank">http://cite.lat-lon.de/deegree-webservices-3.3.6-2/services/wms?service=WMS&amp;version=1.3.0&amp;request=GetCapabilities</a>.</p>
   
-  <p>The tester configures the client to use the proxy service, and uses it to interact 
-  with the reference implementation. Each of the GetCapabilities, GetMap, and GetFeatureInfo 
-  requests that the client submits are validated.</p>
-  
-  <p>The client is expected to fully exercise the service and all advertised options. 
-  A brief coverage report will indicate which service capabilities were not invoked 
-  during the test session. The next sections provide explanation about what is note tested and the details of the expected requests.</p>
+  <p>The tester configures the client to use the proxy endpoint, which will then inspect all incoming 
+  service requests. Each of the requests that the client submits will be validated. The client is expected 
+  to fully exercise the target service with all advertised options. A brief coverage report will indicate 
+  which supported service capabilities were not invoked during the test session.</p>
+
+  <table border="1" style="border-collapse: collapse;">
+  <tr>
+    <th>Request</th>
+    <th>Method</th>
+    <th colspan="2">Options</th>
+  </tr>
+  <tr style="vertical-align:top;">
+    <td>GetCapabilities</td>
+    <td>GET</td>
+    <td colspan="2">
+    <dl>
+      <dt><code>format</code></dt>
+      <dd>text/xml</dd>
+    </dl>
+    </td>
+  </tr>
+  <tr style="vertical-align:top;">
+    <td>GetMap</td>
+    <td>GET</td>
+    <td>
+    <dl>
+      <dt><code>format</code></dt>
+      <dd>image/png</dd>
+      <dd>image/png; subtype=8bit</dd>
+      <dd>image/png; mode=8bit</dd>
+      <dd>image/gif</dd>
+      <dd>image/jpeg</dd>
+      <dd>image/tiff</dd>
+      <dd>image/x-ms-bmp</dd>
+    </dl>
+    </td>
+    <td>
+    <dl>
+      <dt><code>layers</code></dt>
+      <dd>cite:Autos</dd>
+      <dd>cite:BasicPolygons</dd>
+      <dd>cite:Bridges</dd>
+      <dd>cite:BuildingCenters</dd>
+      <dd>cite:Buildings</dd>
+      <dd>cite:DividedRoutes</dd>
+      <dd>cite:Forests</dd>
+      <dd>cite:Lakes</dd>
+      <dd>cite:MapNeatline</dd>
+      <dd>cite:NamedPlaces</dd>
+      <dd>cite:Ponds</dd>
+      <dd>cite:RoadSegments</dd>
+      <dd>cite:Streams</dd>
+      <dd>cite:Terrain</dd>
+    </dl>
+    </td>
+  </tr>
+  <tr style="vertical-align:top;">
+    <td>GetFeatureInfo</td>
+    <td>GET</td>
+    <td>
+    <dl>
+      <dt><code>info_format</code></dt>
+      <dd>text/xml</dd>
+      <dd>text/plain</dd>
+      <dd>text/html</dd>
+      <dd>application/gml+xml; version=2.1</dd>
+      <dd>application/gml+xml; version=3.0</dd>
+      <dd>application/gml+xml; version=3.1</dd>
+      <dd>application/gml+xml; version=3.2</dd>
+      <dd>text/xml; subtype=gml/2.1.2</dd>
+      <dd>text/xml; subtype=gml/3.0.1</dd>
+      <dd>text/xml; subtype=gml/3.1.1</dd>
+      <dd>text/xml; subtype=gml/3.2.1</dd>
+      <dd>application/vnd.ogc.gml</dd>
+    </dl>
+    </td>
+    <td>
+    <dl>
+      <dt><code>query_layers</code></dt>
+      <dd>See GetMap layers</dd>
+    </dl>
+    </td>
+  </tr>
+  </table>
 
   <h2>Capabilities not tested</h2>
     <p>
