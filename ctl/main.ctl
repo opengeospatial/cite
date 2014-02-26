@@ -125,7 +125,7 @@
           </ctl:form>
         </xsl:when>
         <xsl:otherwise>
-          <ctl:message>FAILURE: Unable to create proxy endpoint.</ctl:message>
+          <ctl:message>[FAIL]: Unable to create proxy endpoint.</ctl:message>
           <ctl:fail/>
         </xsl:otherwise>
       </xsl:choose>
@@ -137,14 +137,16 @@
   </ctl:test>
 
   <ctl:test name="main:check-coverage">
+    <!-- See com.occamlab.te.web.CoverageMonitor -->
     <?ctl-msg name="coverage" ?>
     <ctl:param name="coverage-report-uri"/>
-    <ctl:assertion>Service capabilities were fully covered.</ctl:assertion>
+    <ctl:assertion>Service capabilities were fully covered by the client.</ctl:assertion>
     <ctl:code>
       <ctl:message>Coverage report located at <xsl:value-of select="$coverage-report-uri"/></ctl:message>
       <xsl:variable name="coverage-report" select="doc($coverage-report-uri)" />
       <xsl:if test="count($coverage-report//param) > 0">
-        <ctl:message>[FAILURE] Some service capabilities were not exercised.</ctl:message>
+        <ctl:message>[FAIL]: Some service capabilities were not exercised by the client. All &lt;service&gt;/&lt;request&gt; 
+elements shown below should be empty--if not, some request options were not covered in the test run.</ctl:message>
         <ctl:message>
           <xsl:value-of select="saxon:serialize($coverage-report, 'coverage')" />
         </ctl:message>
