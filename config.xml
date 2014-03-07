@@ -3,7 +3,7 @@
 <organization>
   <name>OGC</name>
   <standard>
-    <name>Web Map Server (WMS) - Client</name>
+    <name>Web Map Service (WMS) - Client</name>
     <version>
       <name>1.3.0</name>
       <suite>
@@ -21,6 +21,12 @@
         </sources>
         <resources>wms-client/1.3.0/resources</resources>
         <webdir>wms-client/1.3.0/web</webdir>
+        <profile>
+          <namespace-uri>urn:wms_client_test_suite/main</namespace-uri>
+          <prefix>main</prefix>
+          <local-name>client-coverage</local-name>
+          <title>Coverage reporting</title>
+        </profile>
       </revision>
     </version>
   </standard>

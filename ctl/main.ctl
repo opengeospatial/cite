@@ -12,6 +12,7 @@
   xmlns:gc="urn:wms_client_test_suite/GetCapabilities"
   xmlns:gm="urn:wms_client_test_suite/GetMap"
   xmlns:gfi="urn:wms_client_test_suite/GetFeatureInfo"
+  xmlns:tec="java:com.occamlab.te.TECore"
   xmlns:saxon="http://saxon.sf.net/">
 
   <ctl:suite name="main:ets-wms-client">
@@ -22,14 +23,13 @@
   </ctl:suite>
 
   <ctl:test name="main:wms-client">
-    <ctl:assertion>The WMS client constructs valid requests.</ctl:assertion>
-    <ctl:code> 
+    <ctl:assertion>The WMS client submits valid requests.</ctl:assertion>
+    <ctl:code>
+      <xsl:variable name="wms-url" 
+      select="'http://cite.demo.opengeo.org:8080/geoserver_wms13/ows?service=WMS&amp;version=1.3.0&amp;request=GetCapabilities'" />
       <xsl:variable name="capabilities">
         <ctl:request>
-          <ctl:url>
-            <xsl:value-of 
-         select="'http://cite.lat-lon.de/deegree-webservices-3.3.6-2/services/wms?service=WMS&amp;version=1.3.0&amp;request=GetCapabilities'"/>
-          </ctl:url>
+          <ctl:url><xsl:value-of select="$wms-url" /></ctl:url>
           <ctl:method>GET</ctl:method>
         </ctl:request>
       </xsl:variable>
@@ -110,10 +110,15 @@
            the client submits will be inspected and validated. The details of all the requests that are required to be executed by 
            the client are documented in the <a href="../web/" target="_blank">test suite summary</a>.</p>
 
-           <p>An intercepting proxy is created to access the WMS 1.3 reference implementation. The client is expected to 
-           fully exercise the service, including all implemented options as indicated in the <a target="blank" 
-           href="http://cite.lat-lon.de/deegree-webservices-3.3.6-2/services/wms?service=WMS&amp;version=1.3.0&amp;request=GetCapabilities">service 
-           capabilities document</a>.</p>
+           <p>An intercepting proxy is created to access the WMS 1.3 reference implementation. The client 
+           is expected to fully exercise the WMS implementation, including all implemented options as 
+           indicated in the 
+           <xsl:element name="a">
+             <xsl:attribute name="target">_blank</xsl:attribute>
+             <xsl:attribute name="href"><xsl:value-of select="$wms-url"/></xsl:attribute>
+             <xsl:text>service capabilities document</xsl:text> 
+           </xsl:element>
+           </p>
 
            <p>To start testing, configure the client application to use the following proxy endpoint:</p>
            <div style="background-color:#F0F8FF">
@@ -125,30 +130,39 @@
           </ctl:form>
         </xsl:when>
         <xsl:otherwise>
-          <ctl:message>[FAIL]: Unable to create proxy endpoint.</ctl:message>
+          <ctl:message>[FAIL]: Unable to create proxy endpoints.</ctl:message>
           <ctl:fail/>
         </xsl:otherwise>
       </xsl:choose>
-
-      <ctl:call-test name="main:check-coverage">
-        <ctl:with-param name="coverage-report-uri" select="concat(ctl:getSessionDir(),'/coverage.xml')" />
-      </ctl:call-test>
     </ctl:code>
   </ctl:test>
+
+  <ctl:profile name="main:client-coverage">
+    <ctl:title>WMS Client Coverage</ctl:title>
+    <ctl:description>Checks that a WMS client exercises all capabilities of the WMS service.</ctl:description>
+    <ctl:defaultResult>Pass</ctl:defaultResult>
+    <ctl:base>main:ets-wms-client</ctl:base>
+    <ctl:starting-test>main:check-coverage</ctl:starting-test>
+  </ctl:profile>
 
   <ctl:test name="main:check-coverage">
     <!-- See com.occamlab.te.web.CoverageMonitor -->
     <?ctl-msg name="coverage" ?>
-    <ctl:param name="coverage-report-uri"/>
     <ctl:assertion>Service capabilities were fully covered by the client.</ctl:assertion>
     <ctl:code>
-      <ctl:message>Coverage report located at <xsl:value-of select="$coverage-report-uri"/></ctl:message>
-      <xsl:variable name="coverage-report" select="doc($coverage-report-uri)" />
-      <xsl:if test="count($coverage-report//param) > 0">
-        <ctl:message>[FAIL]: Some service capabilities were not exercised by the client. All &lt;service&gt;/&lt;request&gt; 
-elements shown below should be empty--if not, some request options were not covered in the test run.</ctl:message>
+      <xsl:variable name="session-dir" select="ctl:getSessionDir()" />
+      <xsl:variable name="coverage-results">
+        <service-requests>
+          <xsl:for-each select="collection(concat($session-dir,'?select=WMS-*.xml'))">
+            <xsl:copy-of select="doc(document-uri(.))"/>
+          </xsl:for-each>
+        </service-requests>
+      </xsl:variable>
+      <xsl:if test="count($coverage-results//param) > 0">
+        <ctl:message>[FAIL]: Some service capabilities were not exercised by the client. All &lt;request&gt; 
+elements shown below should be empty--if not, some supported options were not requested by the client.</ctl:message>
         <ctl:message>
-          <xsl:value-of select="saxon:serialize($coverage-report, 'coverage')" />
+          <xsl:value-of select="saxon:serialize($coverage-results, 'coverage')" />
         </ctl:message>
         <ctl:fail/>
       </xsl:if>
