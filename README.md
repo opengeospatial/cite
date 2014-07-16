@@ -18,7 +18,9 @@ build the test suite run maven from the root directory.
    % mvn install
      
 ## To test an application:
-- Install [TEAM Engine](https://github.com/opengeospatial/teamengine/tree/master/src/site)
+
+-  run build.sh that downloads TEAM Engine and installs the test
+
 
 ## Bugs
 
