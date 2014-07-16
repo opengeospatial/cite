@@ -2,9 +2,10 @@
 
 The OGC OGC Web Map Service Client Test-Suite provides the Executable Test Script (ETS) to test implementations against the following specification(s):
 
-- OGC xxx Specification, [OGC 00-000r0](http://portal.opengeospatial.org/files/?artifact_id=00)
+OGC 06-042 (also known as ISO 19128:2005) Specification, http://www.opengeospatial.org/standards/wms
 
-Detailed information about this test suite is available at  http://htmlpreview.github.com/?https://github.com/opengeospatial/ets-wms-client13/tree/master/src/main/web/index.html
+
+Detailed information about this test suite is available at  http://htmlpreview.github.com/?https://github.com/opengeospatial/ets-wms-client13/blob/master/src/main/web/index.html
 
 ## License
 
