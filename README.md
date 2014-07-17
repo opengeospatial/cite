@@ -19,7 +19,7 @@ build the test suite run maven from the root directory.
      
 ## To test an application:
 
--  run build.sh that downloads TEAM Engine and installs the test
+To test an application check the instructions at the [CITE wiki](http://cite.opengeospatial.org/easytesting)
 
 
 ## Bugs
