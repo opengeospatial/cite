@@ -9,7 +9,7 @@ Detailed information about this test suite is available at  http://htmlpreview.g
 
 ## License
 
-[Apache 2.0 License](LICENSE.md)
+[Apache 2.0 License](LICENSE.md).
 
 ## Building
 
@@ -19,12 +19,12 @@ build the test suite run maven from the root directory.
      
 ## To test an application:
 
-To test an application check the instructions at the [CITE wiki](http://cite.opengeospatial.org/easytesting)
+To test an application check the instructions at the [CITE wiki](http://cite.opengeospatial.org/easytesting).
 
 
 ## Bugs
 
-Issue tracker is available at [github](https://github.com/opengeospatial/ets-wms-client13/issues)
+Issue tracker is available at [github](https://github.com/opengeospatial/ets-wms-client13/issues).
 
 ## Mailing Lists
 
