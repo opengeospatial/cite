@@ -1,0 +1,677 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>ets-wms130</artifactId>
+
+  <artifactId>$artifactId</artifactId>
+  <groupId>org.opengis.cite</groupId>
+
+  <groupId>org.opengis.cite</groupId>
+  <version>$version</version>
+
+  <version>$version</version>
+
+
+
+
+
+
+  <name>Conformance Test Suite - $name</name>
+
+  <name>Conformance Test Suite - $name</name>
+  <description>
+
+  <description>
+  Verifies conformance of implementations to $name.
+
+  Verifies conformance of implementations to $name.
+  </description>
+
+  </description>
+  <url>https://github.com/opengeospatial/ets-wms130</url>
+
+  <url>https://github.com/opengeospatial/$artifactId</url>
+
+
+
+  <organization>
+
+  <organization>
+    <name>Open Geospatial Consortium</name>
+
+    <name>Open Geospatial Consortium</name>
+    <url>http://www.opengeospatial.org</url>
+
+    <url>http://www.opengeospatial.org</url>
+  </organization>
+
+  </organization>
+  <scm>
+
+  <scm>
+    <url>https://github.com/opengeospatial/ets-wms130</url>
+
+    <url>https://github.com/opengeospatial/$artifactId</url>
+    <connection>scm:git:https://github.com/opengeospatial/ets-wms130.git</connection>
+
+    <connection>scm:git:https://github.com/opengeospatial/$artifactId.git</connection>
+    <developerConnection>scm:git:git@github.com:opengeospatial/ets-wms130.git</developerConnection>
+
+    <developerConnection>scm:git:git@github.com:opengeospatial/$artifactId.git</developerConnection>
+    <tag>HEAD</tag>
+
+    <tag>HEAD</tag>
+  </scm>
+
+  </scm>
+  <issueManagement>
+
+  <issueManagement>
+    <system>GitHub Issue Tracker</system>
+
+    <system>GitHub Issue Tracker</system>
+    <url>https://github.com/opengeospatial/$name/issues</url>
+
+    <url>https://github.com/opengeospatial/$name/issues</url>
+  </issueManagement>
+
+  </issueManagement>
+
+
+
+  <properties>
+
+  <properties>
+    <ets-code>$ets</ets-code>
+
+    <ets-code>$ets</ets-code>
+    <spec-version>$ver</spec-version>
+
+    <spec-version>$ver</spec-version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <teamengine.version>4.0.5</teamengine.version>
+
+    <teamengine.version>4.0.5</teamengine.version>
+  </properties>
+
+  </properties>
+
+
+
+  <build>
+
+  <build>
+    <pluginManagement>
+
+    <pluginManagement>
+      <plugins>
+
+      <plugins>
+        <plugin>
+
+        <plugin>
+          <!-- Dummy plugin to configure Eclipse m2e plug-in only -->
+
+          <!-- Dummy plugin to configure Eclipse m2e plug-in only -->
+          <groupId>org.eclipse.m2e</groupId>
+
+          <groupId>org.eclipse.m2e</groupId>
+          <artifactId>lifecycle-mapping</artifactId>
+
+          <artifactId>lifecycle-mapping</artifactId>
+          <version>1.0.0</version>
+
+          <version>1.0.0</version>
+          <configuration>
+
+          <configuration>
+            <lifecycleMappingMetadata>
+
+            <lifecycleMappingMetadata>
+              <pluginExecutions>
+
+              <pluginExecutions>
+                <pluginExecution>
+
+                <pluginExecution>
+                  <pluginExecutionFilter>
+
+                  <pluginExecutionFilter>
+                    <groupId>org.apache.maven.plugins</groupId>
+
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-remote-resources-plugin</artifactId>
+
+                    <artifactId>maven-remote-resources-plugin</artifactId>
+                    <versionRange>[1.5,)</versionRange>
+
+                    <versionRange>[1.5,)</versionRange>
+                    <goals>
+
+                    <goals>
+                      <goal>process</goal>
+
+                      <goal>process</goal>
+                    </goals>
+
+                    </goals>
+                  </pluginExecutionFilter>
+
+                  </pluginExecutionFilter>
+                  <action>
+
+                  <action>
+                    <execute>
+
+                    <execute>
+                      <runOnIncremental>false</runOnIncremental>
+
+                      <runOnIncremental>false</runOnIncremental>
+                    </execute>
+
+                    </execute>
+                  </action>
+
+                  </action>
+                </pluginExecution>
+
+                </pluginExecution>
+              </pluginExecutions>
+
+              </pluginExecutions>
+            </lifecycleMappingMetadata>
+
+            </lifecycleMappingMetadata>
+          </configuration>
+
+          </configuration>
+        </plugin>
+
+        </plugin>
+      </plugins>
+
+      </plugins>
+    </pluginManagement>
+
+    </pluginManagement>
+    <plugins>
+
+    <plugins>
+      <plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>2.4</version>
+
+        <version>2.4</version>
+        <executions>
+
+        <executions>
+          <execution>
+
+          <execution>
+            <id>default-jar</id>
+
+            <id>default-jar</id>
+            <phase>disable</phase>
+
+            <phase>disable</phase>
+          </execution>
+
+          </execution>
+        </executions>
+
+        </executions>
+      </plugin>
+
+      </plugin>
+      <plugin>
+
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>2.4</version>
+
+        <version>2.4</version>
+        <configuration>
+
+        <configuration>
+          <appendAssemblyId>false</appendAssemblyId>
+
+          <appendAssemblyId>false</appendAssemblyId>
+          <descriptors>
+
+          <descriptors>
+            <descriptor>${basedir}/src/assembly/dist.xml</descriptor>
+
+            <descriptor>${basedir}/src/assembly/dist.xml</descriptor>
+          </descriptors>
+
+          </descriptors>
+        </configuration>
+
+        </configuration>
+        <executions>
+
+        <executions>
+          <execution>
+
+          <execution>
+            <phase>package</phase>
+
+            <phase>package</phase>
+            <goals>
+
+            <goals>
+              <goal>single</goal>
+
+              <goal>single</goal>
+            </goals>
+
+            </goals>
+          </execution>
+
+          </execution>
+        </executions>
+
+        </executions>
+      </plugin>
+
+      </plugin>
+      <plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-site-plugin</artifactId>
+
+        <artifactId>maven-site-plugin</artifactId>
+        <version>3.3</version>
+
+        <version>3.3</version>
+        <executions>
+
+        <executions>
+          <execution>
+
+          <execution>
+            <id>site-package</id>
+
+            <id>site-package</id>
+            <phase>prepare-package</phase>
+
+            <phase>prepare-package</phase>
+            <goals>
+
+            <goals>
+              <goal>jar</goal>
+
+              <goal>jar</goal>
+            </goals>
+
+            </goals>
+          </execution>
+
+          </execution>
+        </executions>
+
+        </executions>
+        <dependencies>
+
+        <dependencies>
+          <dependency>
+
+          <dependency>
+            <groupId>org.apache.maven.doxia</groupId>
+
+            <groupId>org.apache.maven.doxia</groupId>
+            <artifactId>doxia-module-markdown</artifactId>
+
+            <artifactId>doxia-module-markdown</artifactId>
+            <version>1.5</version>
+
+            <version>1.5</version>
+          </dependency>
+
+          </dependency>
+        </dependencies>
+
+        </dependencies>
+        <configuration>
+
+        <configuration>
+          <relativizeDecorationLinks>false</relativizeDecorationLinks>
+
+          <relativizeDecorationLinks>false</relativizeDecorationLinks>
+          <generateReports>false</generateReports>
+
+          <generateReports>false</generateReports>
+        </configuration>
+
+        </configuration>
+      </plugin>
+
+      </plugin>
+      <plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.17</version>
+
+        <version>2.17</version>
+        <configuration>
+
+        <configuration>
+          <includes>
+
+          <includes>
+            <include>**/Verify*.java</include>
+
+            <include>**/Verify*.java</include>
+            <include>**/*Tests.java</include>
+
+            <include>**/*Tests.java</include>
+            <include>**/*Test.java</include>
+
+            <include>**/*Test.java</include>
+          </includes>
+
+          </includes>
+        </configuration>
+
+        </configuration>
+      </plugin>
+
+      </plugin>
+      <plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.1</version>
+
+        <version>3.1</version>
+        <configuration>
+
+        <configuration>
+          <source>1.7</source>
+
+          <source>1.7</source>
+          <target>1.7</target>
+
+          <target>1.7</target>
+        </configuration>
+
+        </configuration>
+      </plugin>
+
+      </plugin>
+      <plugin>
+
+      <plugin>
+        <artifactId>maven-remote-resources-plugin</artifactId>
+
+        <artifactId>maven-remote-resources-plugin</artifactId>
+        <version>1.5</version>
+
+        <version>1.5</version>
+        <configuration>
+
+        <configuration>
+          <resourceBundles>
+
+          <resourceBundles>
+            <resourceBundle>org.opengis.cite.teamengine:teamengine-resources:${teamengine.version}</resourceBundle>
+
+            <resourceBundle>org.opengis.cite.teamengine:teamengine-resources:${teamengine.version}</resourceBundle>
+          </resourceBundles>
+
+          </resourceBundles>
+          <!-- attach resources to test build only -->
+
+          <!-- attach resources to test build only -->
+          <attachToMain>false</attachToMain>
+
+          <attachToMain>false</attachToMain>
+        </configuration>
+
+        </configuration>
+        <executions>
+
+        <executions>
+          <execution>
+
+          <execution>
+            <goals>
+
+            <goals>
+              <goal>process</goal>
+
+              <goal>process</goal>
+            </goals>
+
+            </goals>
+          </execution>
+
+          </execution>
+        </executions>
+
+        </executions>
+      </plugin>
+
+      </plugin>
+    </plugins>
+
+    </plugins>
+    <testResources>
+
+    <testResources>
+      <testResource>
+
+      <testResource>
+        <directory>${basedir}/src/test/resources</directory>
+
+        <directory>${basedir}/src/test/resources</directory>
+        <filtering>true</filtering>
+
+        <filtering>true</filtering>
+        <includes>
+
+        <includes>
+          <include>*.properties</include>
+
+          <include>*.properties</include>
+        </includes>
+
+        </includes>
+      </testResource>
+
+      </testResource>
+    </testResources>
+
+    </testResources>
+  </build>
+
+  </build>
+
+
+
+  <reporting>
+
+  <reporting>
+    <plugins>
+
+    <plugins>
+      <plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+        <version>2.7</version>
+
+        <version>2.7</version>
+        <reportSets>
+
+        <reportSets>
+          <reportSet>
+
+          <reportSet>
+            <reports>
+
+            <reports>
+            </reports>
+
+            </reports>
+          </reportSet>
+
+          </reportSet>
+        </reportSets>
+
+        </reportSets>
+      </plugin>
+
+      </plugin>
+    </plugins>
+
+    </plugins>
+  </reporting>
+
+  </reporting>
+
+
+
+  <distributionManagement>
+
+  <distributionManagement>
+    <site>
+
+    <site>
+      <id>website</id>
+
+      <id>website</id>
+      <url>http://myhome</url>
+
+      <url>http://myhome</url>
+    </site>
+
+    </site>
+  </distributionManagement>
+
+  </distributionManagement>
+
+
+
+  <dependencies>
+
+  <dependencies>
+    <dependency>
+
+    <dependency>
+      <groupId>org.opengis.cite.teamengine</groupId>
+
+      <groupId>org.opengis.cite.teamengine</groupId>
+      <artifactId>teamengine-core</artifactId>
+
+      <artifactId>teamengine-core</artifactId>
+      <version>${teamengine.version}</version>
+
+      <version>${teamengine.version}</version>
+      <scope>test</scope>
+
+      <scope>test</scope>
+    </dependency>
+
+    </dependency>
+    <dependency>
+
+    <dependency>
+      <groupId>junit</groupId>
+
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+
+      <artifactId>junit</artifactId>
+      <version>4.11</version>
+
+      <version>4.11</version>
+      <scope>test</scope>
+
+      <scope>test</scope>
+    </dependency>
+
+    </dependency>
+  </dependencies>
+
+  </dependencies>
+
+
+
+  <repositories>
+
+  <repositories>
+    <repository>
+
+    <repository>
+      <!-- Allows public read-only access -->
+
+      <!-- Allows public read-only access -->
+      <id>opengeospatial-cite</id>
+
+      <id>opengeospatial-cite</id>
+      <name>OGC CITE Repository</name>
+
+      <name>OGC CITE Repository</name>
+      <url>https://svn.opengeospatial.org/ogc-projects/cite/maven</url>
+
+      <url>https://svn.opengeospatial.org/ogc-projects/cite/maven</url>
+      <snapshots>
+
+      <snapshots>
+        <enabled>false</enabled>
+
+        <enabled>false</enabled>
+      </snapshots>
+
+      </snapshots>
+    </repository>
+
+    </repository>
+  </repositories>
+
+  </repositories>
+
+
+
+</project>
+</project>
