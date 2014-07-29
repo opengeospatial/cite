@@ -2,7 +2,7 @@
 
 The $name $ver Test-Suite provides the Executable Test Script (ETS) to test implementations against the following specification(s):
 
-Detailed information about this test suite is available [here]( http://htmlpreview.github.com/?https://github.com/opengeospatial/$artifactId/blob/master/src/main/web/index.html).
+Detailed information about this test suite is available [here]( http://htmlpreview.github.com/?https://github.com/opengeospatial/ets-19139/blob/master/src/main/javadoc/overview.html).
 
 ## License
 

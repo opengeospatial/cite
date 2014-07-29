@@ -44,7 +44,7 @@ def createFile(template,new):
 
 #### clean up
 
-word_dic = {
+word_dic2 = {
 '"https': 'https',
 'services/\n': 'services/',
 '//porta\n':'//porta',
@@ -59,9 +59,16 @@ word_dic = {
 '_Opened':'\n\n_Opened',
 'Last Updated: 0000-00-00 00:00:00':''
 
+}
 
+word_dic = {
+"\n\n":"\n",
+"\n\n\n":"\n",
+"\n\n\n\n":"\n",
+"\n\n\n\n\n":"\n"
 
 }
+
 
 
 def replace_words(text, word_dic):
