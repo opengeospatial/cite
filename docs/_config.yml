@@ -2,8 +2,8 @@
 title: CITE Tools
 issues: http://github..
 description: "CITE tools"
-baseurl: http://github.com/opengeospatial/cite
-url: "http://github.com/opengeospatial/cite"
+baseurl: http://opengeospatial.github.io/cite/
+url: "http://opengeospatial.github.io/cite/"
 twitter_username: opengeospatial
 github_url: "opengeospatial/cite"
 
