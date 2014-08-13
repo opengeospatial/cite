@@ -2,7 +2,7 @@
 title: OGC CITE Tools
 issues: http://github..
 description: "OGC CITE tools"
-baseurl: ""
+baseurl: http://opengeospatial.github.io/cite/
 url: "https://github.com/opengeospatial/cite"
 twitter_username: opengeospatial
 github_url: "opengeospatial/cite"
@@ -10,3 +10,5 @@ github_url: "opengeospatial/cite"
 # Build settings
 markdown: kramdown
 permalink: pretty
+relative_permalinks: true
+
