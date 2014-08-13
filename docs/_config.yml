@@ -2,7 +2,7 @@
 title: CITE Tools
 issues: http://github..
 description: "CITE tools"
-baseurl: file:///Users/lbermudez/Documents/Dropbox/github/cite/docs/_site
+baseurl: http://github.com/opengeospatial/cite
 url: "http://github.com/opengeospatial/cite"
 twitter_username: opengeospatial
 github_url: "opengeospatial/cite"
