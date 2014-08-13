@@ -1,10 +1,15 @@
 <header class="site-header">
 
-  <div class="wrap">
 
-    <a class="site-title" href="{{ site.baseurl }}/">{{ site.title }}</a>
+
+<div class="wrap">
 
     <nav class="site-nav">
+    
+    
+    
+    <img src="{{ "/img/ogc_logo_tnr_mlc_blue_HR.png" | prepend: site.baseurl }}">
+    
       <a href="#" class="menu-icon">
         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
            viewBox="0 0 18 15" enable-background="new 0 0 18 15" xml:space="preserve">
@@ -17,6 +22,7 @@
         </svg>
       </a>
       <div class="trigger">
+      
         {% for page in site.pages %}
           {% if page.title %}<a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>{% endif %}
         {% endfor %}

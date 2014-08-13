@@ -1,8 +1,8 @@
 # Site settings
-title: OGC CITE Tools
+title: CITE Tools
 issues: http://github..
-description: "OGC CITE tools"
-baseurl: http://opengeospatial.github.io/cite
+description: "CITE tools"
+baseurl: file:///Users/lbermudez/Documents/Dropbox/github/cite/docs/_site
 url: "http://github.com/opengeospatial/cite"
 twitter_username: opengeospatial
 github_url: "opengeospatial/cite"
