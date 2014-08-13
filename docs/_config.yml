@@ -1,0 +1,12 @@
+# Site settings
+title: OGC CITE Tools
+issues: http://github..
+description: "OGC CITE tools"
+baseurl: ""
+url: "https://github.com/opengeospatial/cite"
+twitter_username: opengeospatial
+github_url: "opengeospatial/cite"
+
+# Build settings
+markdown: kramdown
+permalink: pretty
