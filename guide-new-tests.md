@@ -14,7 +14,7 @@ Steps
 
    For example for:
       - GML 3.2.1 it will be gml32   
-      - Waterml 2.0 it will be waterml20
+      - Waterml 2.0.1 it will be waterml20
       
 1. Determine the version of the tests. It should follow these conventions:  {major}.{minor}.{revision}-r1-SNAPSHOT
 
