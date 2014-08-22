@@ -18,7 +18,7 @@ Steps
       
 1. Determine the version of the tests. It should follow these conventions:  {major}.{minor}.{revision}-r1-SNAPSHOT
 
-   For example for waterml 2.0 is: 2.0.0-r1-SNAPSHOT
+   For example for waterml 2.0.1 is: 2.0.1-r1-SNAPSHOT
 
 1. Run the following command:
  
