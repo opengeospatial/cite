@@ -29,4 +29,18 @@ Steps
          mvn archetype:generate -DarchetypeGroupId=org.opengis.cite -DarchetypeArtifactId=ets-archetype-testng -Dets-code=waterml20
 
    Answer the questions. Use the defaults.
+   
+1. If not using an interactive mode, the following can be run (using the waterml 2.0.1 example):
+
+         mvn archetype:generate \
+         -DinteractiveMode=false \
+         -DarchetypeGroupId=org.opengis.cite \
+         -DarchetypeArtifactId=ets-archetype-testng \
+         -DarchetypeVersion=2.1 \
+         -Dets-code=waterml20 \
+         -DartifactId=ets-waterml20 \
+         -Dversion=2.0.1-r1-SNAPSHOT \
+         -Dpackage=org.opengis.cite.waterml20 \
+         -Dets-title="WaterML 2.0 Executable Test Suite" 
+
 
