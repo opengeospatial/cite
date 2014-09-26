@@ -10,7 +10,6 @@ import sys
 TE_BASE=sys.argv[1]
 if not TE_BASE.endswith("/"):
    TE_BASE=TE_BASE+"/"
-print ('TE_BASE (argument one is)',TE_BASE)
 scripts_dir=TE_BASE+"/scripts/"
 #sys.exit(0)
 
@@ -26,7 +25,6 @@ tree.write("config-all.xml")
 
 
 def processStandardVersion(tree2,node2):
-   print ('node2',node2.text)
    node1Sta=root.find('.//standard')
    added=False
    if node1Sta is None:
