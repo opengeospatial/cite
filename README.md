@@ -1,1 +1,1 @@
-This repository contains information about the deployment of OGC CITE infraestructure. It includes TEAMEngine and the test suites.
+This repository contains general tools and issues to support the OGC Compliance (CITE) Program.
