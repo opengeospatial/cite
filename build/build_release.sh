@@ -1,9 +1,38 @@
 #!/bin/bash
 #build_release
 
-# gets the master, removes snapshot from pom, and tag for new release
-# echo 'be sure that you have run and test properly'
-# echo 'starting release'
+# Builds a release from current directory (should be master), commits and publishes the new tag in github pages
+
+
+
+publishGitHubPages(){
+	folder=target/site
+	if [ $# -eq 0 ]
+	then
+	    # "No arguments provided"
+	    folder=target/site
+	else
+	   folder=$1
+	fi
+
+	echo "Creating github page for $folder"
+
+	git push origin --delete gh-pages  
+
+	# needs to be under root of a cite maven project, where target/site is available 
+	# is in the ignore file - need to force add
+	git add -f $folder 
+	git commit -m 'publish web site'
+	# move it to gh-pages
+	git subtree push --prefix $folder origin gh-pages 
+	# remove the commit
+	git reset HEAD 
+	git rm -r target/site 
+	git commit -m 'clean project removing files created to publish the web site' 
+	git push origin master 
+}
+
+# removes snapshot from pom, 
 echo '----------------'
 mvn package -DskipTests=true
 dir=$(pwd)
@@ -32,7 +61,7 @@ sed -i'.orig' 's/-SNAPSHOT//' pom.xml
 
 
 
-#echo 'remove first -SNAPSHOT keep the old file in .orig'
+#commits changes in pom'
 
 
 git add pom.xml
@@ -45,9 +74,13 @@ mvn clean install
 
 cd $dir
 
+#creates a github page
+
 echo 'publishing ghpages'
-pubpage &> /dev/null
+publishGitHubPages &> /dev/null
 echo ' update version to $new_version_number'
+
+# updates pom with the new version
 
 sed -i'.orig' 's/<version>'"$version"'<\/version>/<version>'"$new_version_number"'-SNAPSHOT<\/version>/' pom.xml
 git add pom.xml
