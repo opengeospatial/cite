@@ -2,7 +2,7 @@
 #build_release
 
 # Builds a release from current directory (should be master), commits and publishes the new tag in github pages
-# it requires to GNU sed. For mac look here: http://stackoverflow.com/questions/30003570/how-to-use-gnu-sed-on-mac-os-x
+
 
 
 publishGitHubPages(){
@@ -38,12 +38,9 @@ mvn package -DskipTests=true
 dir=$(pwd)
 test_name=$(basename $dir)
 test_abbrev=$(echo $test_name |sed 's/ets-//' | sed -E 's/[0-9]+//')
-test_version=$(echo $test_name |sed 's/ets-//' | sed -E 's/[a-z]+//')
 
-echo 'Building  a new release for' $test_abbrev ' ' $test_version
-
+echo 'Building  a new release for $test_name'
 echo ''
-
 
 version_complete=$(echo -e 'setns x=http://maven.apache.org/POM/4.0.0\ncat /x:project/x:version/text()' | xmllint --shell pom.xml | grep -v /)
 version=$(echo $version_complete | sed 's/-SNAPSHOT//g') 
@@ -80,18 +77,14 @@ cd $dir
 #creates a github page
 
 echo 'publishing ghpages'
-# publishGitHubPages &> /dev/null
+publishGitHubPages &> /dev/null
 echo ' update version to $new_version_number'
 
 # updates pom with the new version
 
-sed -i '0,/<version>'$version'/s//<version>'$new_version_number'-SNAPSHOT/' pom.xml
-
+sed -i'.orig' 's/<version>'"$version"'<\/version>/<version>'"$new_version_number"'-SNAPSHOT<\/version>/' pom.xml
 git add pom.xml
 git clean -f
 git commit -m "update pom file to $new_version_number-SNAPSHOT version"
 git push origin master
-
-echo 'issue name:  '$test_abbrev' '$test_version' revision' $version 'in Beta'
-echo 'to be created here: https://github.com/opengeospatial/te-releases/issues'
 
