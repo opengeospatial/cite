@@ -1,6 +1,6 @@
 # CAT 3.0 Testing Demo
 
-Short link to this page: (bitly.com/cat-test-demo)
+Short link to this page: (http://bitly.com/cat-test-demo)
 This demo provides information about testing CAT 3.0 servers using the OGC free validator.
 
 For this demo the following links will be used:
