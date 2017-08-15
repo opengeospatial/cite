@@ -4,7 +4,7 @@ This demo provides information about testing CAT 3.0 servers using the OGC free 
 
 For this demo the following links will be used:
 
-OGC Beta Validation Website: http://cite.opengeospatial.org/te2/
+Validation Website: http://cite.opengeospatial.org/teamengine/
 
 Two [OGC Reference Implementations](https://github.com/opengeospatial/cite/wiki/OGC-Reference-Implementations):
 
