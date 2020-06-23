@@ -1,0 +1,80 @@
+== Naming of OGC API Standards, Repositories & Specification Elements
+
+This section presents the normative clauses of this policy. It should be noted that the clauses relating to specification elements maintain consistency with the http://portal.opengeospatial.org/files/?artifact_id=39194[OGC-NA Name type specification - specification elements (10-103)] policy.
+
+=== Repositories
+
+This policy document acknowledges that SWGs will create one or more Git repositories on GitHub, Gitlab or other service. To ensure consistency in the naming of Git repositories, SWGs shall be required to name the repositories as follows:
+
+* https://github.com/opengeospatial/ogcapi-{resourceName}
+
+The parameter {resourceName} shall be the plural of the name of the type of resource. For example, https://github.com/opengeospatial/ogcapi-features
+
+=== Standards
+
+Many of the emerging and existing OGC API standards are multi-part standards. This policy document acknowledges that the SWGs will have to plan to accommodate future extensions into their naming of standards. To ensure consistency in the naming of standards and their extensions, SWGs shall be required to name the standards as follows:
+
+* OGC API - {resourceName} - Part n: {Topic}
+
+The parameter {resourceName} shall be the plural of the name of the type of resource. 'n' refers to the position of the document in the multi-part standard and shall always be greater than zero. {Topic} refers to the topic or theme of the standard. For example, OGC API - Common - Part 1: Core
+
+The first in the sequence of parts shall always be reserved for the 'Core' standard and therefore Part 1 is reserved for the 'Core' standard.
+
+
+=== Requirements Classes
+
+The base namespace of Requirements Classes shall indicate the Part number {n} and Version number {v} of the standard as follows. The requirements class shall be indicated by the {reqClass} segment(s) to the right of the '/req' segment.
+
+* http://www.opengis.net/spec/ogcapi-{resourceName}-{n}/{v}/req/{reqClass}
+
+For example, http://www.opengis.net/spec/ogcapi-processes-1/1.0/req/core
+
+
+=== Requirements
+
+The base namespace of Requirements shall indicate the Part number {n} and Version number {v} of the standard as follows. The requirement shall be indicated by the {req} segment(s) to the right of the '/req' segment.
+
+* http://www.opengis.net/spec/ogcapi-{resourceName}-{n}/{v}/req/{reqClass}/{req}
+
+For example, http://www.opengis.net/spec/ogcapi-tiles-1/1.0/req/core/root-success
+
+
+=== Conformance Classes
+
+The base namespace of Conformance Classes shall indicate the Part number {n} and Version number {v} of the standard as follows. The conformance class shall be indicated by the {confClass} segment(s) to the right of the '/conf' segment.
+
+* http://www.opengis.net/spec/ogcapi-{resourceName}-{n}/{v}/conf/{confClass}
+
+For example, http://www.opengis.net/spec/ogcapi-coverages-1/1.0/conf/core
+
+=== Abstract Tests
+
+The base namespace of Abstract Tests shall indicate the Part number {n} and Version number {v} of the standard as follows. The conformance test shall be indicated by the {test} segment(s) to the right of the '/ats' segment.
+
+* http://www.opengis.net/spec/ogcapi-{resourceName}-{n}/{v}/conf/{confClass}/{test}
+
+=== Definitions of the standards
+
+The OGC-NA maintains URIs for definitions of several standards, for example http://www.opengis.net/def/interface/ogcapi-features[OGC API - Features], Sensor Observation Service (SOS) and so forth. To formalize the namespace used for the definitions, this policy states that the URIs of definitions of OGC API standards shall be of the form:
+
+* http://www.opengis.net/def/interface/ogcapi-{resourceName}
+
+Note that this clause maintains consistency with the https://docs.opengeospatial.org/pol/09-048r5.html[OGC Name Type Specification - definitions - part 1 – basic name (09-048r5)] policy.
+
+=== Link Relation Types
+
+The OGC-NA maintains a register for link relation types at http://www.opengis.net/def/rel. The register shall be used as a look-up and also to track OGC's submissions to the Internet Assigned Numbers Authority (https://www.iana.org[IANA]).
+
+Every link relation type used in an OGC standard shall be registered in the OGC link relation type register.
+
+For link relation types registered outside of the authority "iana", the definition URI shall be used as the value of the `rel` property of the link. For example, http://www.opengis.net/def/rel/ogc/1.0/conformance.
+
+=== Media Types
+
+The OGC-NA maintains a register for media types at http://www.opengis.net/def/media-type.
+
+Every media type used in an OGC standard
+
+* shall be registered in the OGC media type register,
+* shall include a notation property, and
+* should be registered in the IANA register.

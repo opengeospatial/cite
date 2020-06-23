@@ -1,0 +1,40 @@
+[big]*i.     Abstract*
+
+This document describes the Open Geospatial Consortium (OGC) Compliance Testing Program. It describes the roles and responsibilities, compliance testing procedures, development of test packaging, and policies for developing and releasing the software use for testing.
+
+The Compliance Test Program provides the resources, procedures, and policies to certify products for compliance with one or more OGC standards.
+
+[big]*ii.    Keywords*
+
+The following are keywords to be used by search engines and document catalogues.
+
+ogcdoc, OGC document,  policy, compliance
+
+[big]*iii.   Preface*
+
+The primary purpose of the Compliance Testing Program is to increase systems interoperability while reducing technology risks by providing a process whereby compliance with OGC standards can be tested.
+
+[big]*iv.    Submitting organizations*
+
+The following organizations submitted this Document to the Open Geospatial Consortium (OGC):
+
+Organization name(s)
+
+Open Geospatial Consortium
+
+[big]*v.     Submitters*
+
+All questions regarding this submission should be directed to the editor or the submitters:
+
+Open Geospatial Consortium
+
+[big]*vi.     Contributors*
+
+.Contributors
+[width="80%",options="header"]
+|====================
+|Name |Affiliation
+|Gobe Hobona | OGC
+|Luis Bermudez | OGC
+|Sam Bacharach | OGC
+|====================
