@@ -1,15 +1,13 @@
-# Naming of OGC API Standards, Repositories & Specification Elements
+# Compliance Testing Program Policies & Procedures
 
 ## Content
 
-This folder contains the DRAFT text for the OGC Policy on 'Naming of OGC API Standards, Repositories & Specification Elements'.
+This document describes the Open Geospatial Consortium (OGC) Compliance Testing Program. It describes the roles and responsibilities, compliance testing procedures, development of test packaging, and policies for developing and releasing the software use for testing.
 
-The entry point is link:/ogcna_ogcapinaming_policy.adoc[ogcna_ogcapinaming_policy.adoc].
-
-https://htmlpreview.github.io/?https://github.com/opengeospatial/NamingAuthority/blob/master/policyAndProcedures/OGCAPIStandardsReposSpecElements/ogcna_ogcapinaming_policy.html
+The Compliance Test Program provides the resources, procedures, and policies to certify products for compliance with one or more OGC standards.
 
 ## Building
 
-To produce the HTML of the standard run `asciidoctor --safe -a data-uri -o ogcna_ogcapinaming_policy.html ogcna_ogcapinaming_policy.adoc`.
+To produce the HTML of the standard run `asciidoctor --safe -a data-uri -o cite_policy.html cite_policy.adoc`.
 
-To produce the PDF of the standard run `asciidoctor-pdf --safe -o ogcna_ogcapinaming_policy.pdf ogcna_ogcapinaming_policy.adoc`
+To produce the PDF of the standard run `asciidoctor-pdf --safe -o cite_policy.pdf cite_policy.adoc`
