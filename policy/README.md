@@ -8,6 +8,6 @@ The Compliance Test Program provides the resources, procedures, and policies to 
 
 ## Building
 
-To produce the HTML of the standard run `asciidoctor --safe -a data-uri -o cite_policy.html cite_policy.adoc`.
+To produce the HTML of the standard run `asciidoctor --safe -a data-uri -o cite_policy.html cite_policy.adoc`
 
 To produce the PDF of the standard run `asciidoctor-pdf --safe -o cite_policy.pdf cite_policy.adoc`
