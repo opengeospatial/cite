@@ -1,4 +1,4 @@
-# Building an ETS in a Docker Image
+# Example Dockerfile for Building an ETS
 
 This example illustrates how to build an ETS in a Docker Image.
 
