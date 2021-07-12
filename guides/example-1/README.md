@@ -16,4 +16,4 @@ Now execute the following command to run the docker image.
 
 `docker run etsexample:local `
 
-When the image runs, it installs maven, clones the ETS folder and then runs `mvn clean package` on the ETS.
+When the image runs, it installs maven, clones the ETS repository into folder and then runs `mvn clean package` on the ETS.
