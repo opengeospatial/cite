@@ -12,7 +12,7 @@ The build instals git, wget and unzip in the `adoptopenjdk/openjdk8` image.
 
 ## Running
 
-Now execute the following command to run the docker image. This will 
+Now execute the following command to run the docker image.  
 
 `docker run etsexample:local `
 
