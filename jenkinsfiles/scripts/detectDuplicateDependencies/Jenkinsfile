@@ -5,9 +5,18 @@ pipeline {
     jdk 'JDK 8'
   }
   stages {
+    stage('Initialize') {
+      steps{
+        sh '''
+          echo "PATH = ${PATH}"
+          echo "M2_HOME = ${M2_HOME}"
+        '''
+        sh 'mvn --version'
+      }
+    }
     stage('Test') {
       steps{
-        sh './scripts/detectDuplicateDependencies.sh'
+        sh 'cd scripts && ./detectDuplicateDependencies.sh'
       }
     }
     stage('Clean up') {

@@ -8,9 +8,18 @@ pipeline {
     string(name: 'DEPENDENCY', description: 'Dependency to be detected (pattern: groupId:artifactId)', defaultValue: 'xerces:xercesImpl')
   }
   stages {
+    stage('Initialize') {
+      steps{
+        sh '''
+          echo "PATH = ${PATH}"
+          echo "M2_HOME = ${M2_HOME}"
+        '''
+        sh 'mvn --version'
+      }
+    }
     stage('Test') {
       steps{
-        sh './scripts/detectDependency.sh $DEPENDENCY'
+        sh 'cd scripts && ./detectDependency.sh $DEPENDENCY'
       }
     }
     stage('Clean up') {
