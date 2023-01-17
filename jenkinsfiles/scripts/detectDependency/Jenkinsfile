@@ -1,0 +1,27 @@
+pipeline {
+  agent any
+  tools {
+    maven 'mvn'
+    jdk 'JDK 8'
+  }
+  parameters {
+    string(name: 'DEPENDENCY', description: 'Dependency to be detected (pattern: groupId:artifactId)', defaultValue: 'xerces:xercesImpl')
+  }
+  stages {
+    stage('Preparation') {
+      steps{
+        sh 'git clone https://github.com/opengeospatial/cite.git .'
+      }
+    }
+    stage('Test') {
+      steps{
+        sh './scripts/detectDependency.sh $DEPENDENCY'
+      }
+    }
+    stage('Clean up') {
+      steps{
+        deleteDir()
+      }
+    }
+  }
+}

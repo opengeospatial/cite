@@ -1,0 +1,24 @@
+pipeline {
+  agent any
+  tools {
+    maven 'mvn'
+    jdk 'JDK 8'
+  }
+  stages {
+    stage('Preparation') {
+      steps{
+        sh 'git clone https://github.com/opengeospatial/cite.git .'
+      }
+    }
+    stage('Test') {
+      steps{
+        sh './scripts/detectDuplicateDependencies.sh'
+      }
+    }
+    stage('Clean up') {
+      steps{
+        deleteDir()
+      }
+    }
+  }
+}
